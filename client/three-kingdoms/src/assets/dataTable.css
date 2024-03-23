@@ -1,0 +1,72 @@
+.p-paginator .p-dropdown {
+    margin: 0rem 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.p-paginator .p-dropdown .p-dropdown-label {
+    display: flex;
+    height: 2rem;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.p-datatable .p-column-header-content {
+    display: flex;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-datatable .p-datatable-tbody>tr>td {
+    padding: 0.5rem 0rem;
+    text-align: center;
+}
+
+.p-icon-field {
+    height: 2rem;
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.p-icon-field>.p-input-icon {
+    margin-top: -0.5rem;
+}
+
+.p-icon-field-left>.p-inputtext {
+    padding-left: 2.5rem;
+}
+
+.p-column-filter-row {
+    justify-content: end;
+}
+
+.p-column-filter-row .p-column-filter-element {
+    margin: 0.3rem;
+}
+
+.p-fluid .p-inputtext {
+    padding: 0.3rem 0.3rem;
+}
+
+.p-column-filter-overlay .p-column-filter-row-items {
+    padding: 0.25rem;
+}
+
+.p-column-filter-overlay .p-column-filter-row-items .p-column-filter-row-item {
+    margin: 2px 0;
+    padding: 0.5rem 0.75rem;
+}
+
+.p-button.p-button-icon-only.p-button-rounded{
+    height: 2.5rem;
+}
+
+.p-dialog {
+    padding: 1rem;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    margin: 2px 0;
+    padding: 0.5rem 0.75rem;
+}
