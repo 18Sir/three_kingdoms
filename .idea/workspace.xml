@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec6d0ec-478c-443f-b77c-8f7858744f7b" name="Default Changelist" comment="" />
+    <list default="true" id="7ec6d0ec-478c-443f-b77c-8f7858744f7b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0a0efc52f829297430988261896dc239e2e22dea" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0a0efc52f829297430988261896dc239e2e22dea" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/f/4f8f6d654f8530215d2dbfa5e4911f7d15cc95e5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/f/4f8f6d654f8530215d2dbfa5e4911f7d15cc95e5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/1/51ee4d384595e236b16a1d4e305c9ffab738b01a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/1/51ee4d384595e236b16a1d4e305c9ffab738b01a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/ActorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/ActorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/ProjectExceptionAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/ProjectExceptionAdvice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/application.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,13 +36,15 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="D:\idea\apache-maven-3.6.3" />
         <option name="userSettingsFile" value="D:\idea\apache-maven-3.6.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -81,11 +95,11 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "configurable.group.build",
     "ts.external.directory.path": "D:\\idea\\IntelliJ IDEA 2023.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   },
@@ -217,8 +231,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ServerApplicationTests.test" />
         <item itemvalue="Spring Boot.ServerApplication" />
+        <item itemvalue="JUnit.ServerApplicationTests.test" />
         <item itemvalue="JUnit.ServerApplicationTests.getRelativePath" />
         <item itemvalue="JUnit.ServerApplicationTests.getUid" />
         <item itemvalue="JUnit.ServerApplicationTests.getCommentAll" />
@@ -292,11 +306,24 @@
       <workItem from="1711072333221" duration="492000" />
       <workItem from="1711072842466" duration="3779000" />
       <workItem from="1711090669479" duration="10509000" />
+      <workItem from="1711197610084" duration="1907000" />
+      <workItem from="1711329977560" duration="5489000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

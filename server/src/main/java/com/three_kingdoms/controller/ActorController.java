@@ -34,9 +34,9 @@ public class ActorController {
 
     //查询所有人物
     @GetMapping("/all")
-    public Result findAllActor(){
+    public Result<List<Actor>> findAllActor(){
         List<Actor> allActor = actorServices.findAllActor();
-        if (allActor.size() > 0) {
+        if (!allActor.isEmpty()) {
             return Result.selectSuccess(allActor);
         } else {
             return Result.selectError();

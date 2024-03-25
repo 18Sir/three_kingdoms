@@ -1,0 +1,236 @@
+2024-3月-25 10:53:55.125 ERROR [main] o.a.c.c.AprLifecycleListener - An incompatible version [1.2.16] of the Apache Tomcat Native library is installed, while Tomcat requires version [1.2.34]
+2024-3月-25 10:53:55.887 WARN  [main] c.b.m.c.m.TableInfoHelper - This primary key of "uid" is primitive !不建议如此请使用包装类 in Class: "com.three_kingdoms.domain.User"
+2024-3月-25 10:53:56.106 DEBUG [main] o.s.w.s.m.m.a.RequestMappingHandlerMapping - 53 mappings in 'requestMappingHandlerMapping'
+2024-3月-25 10:53:56.156 DEBUG [main] o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /image/**] in 'resourceHandlerMapping'
+2024-3月-25 10:53:56.178 DEBUG [main] o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-3月-25 10:53:56.207 DEBUG [main] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-3月-25 10:55:02.421 INFO  [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-3月-25 10:55:02.422 DEBUG [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - Detected StandardServletMultipartResolver
+2024-3月-25 10:55:02.422 DEBUG [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2024-3月-25 10:55:02.422 DEBUG [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - Detected FixedThemeResolver
+2024-3月-25 10:55:02.423 DEBUG [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@41eec7c6
+2024-3月-25 10:55:02.423 DEBUG [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@479bda74
+2024-3月-25 10:55:02.424 DEBUG [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-3月-25 10:55:02.424 INFO  [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - Completed initialization in 3 ms
+2024-3月-25 10:55:02.431 DEBUG [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - GET "/users", parameters={}
+2024-3月-25 10:55:02.441 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.UserController#getById(String)
+2024-3月-25 10:55:03.361 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:55:03.365 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=User(uid=1000, uname=admin, password=用户密码不可见, avatar=null, ema (truncated)...]
+2024-3月-25 10:55:03.380 DEBUG [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:55:06.542 DEBUG [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet - POST "/users/l", parameters={masked}
+2024-3月-25 10:55:06.542 DEBUG [http-nio-8080-exec-2] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.UserController#login(String, String)
+2024-3月-25 10:55:06.620 DEBUG [http-nio-8080-exec-2] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:55:06.620 DEBUG [http-nio-8080-exec-2] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=Login_OK, msg=登录成功, data=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVpZCI6MTAwMC (truncated)...]
+2024-3月-25 10:55:06.621 DEBUG [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:55:09.879 DEBUG [http-nio-8080-exec-7] o.s.w.s.DispatcherServlet - GET "/users", parameters={}
+2024-3月-25 10:55:09.881 DEBUG [http-nio-8080-exec-7] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.UserController#getById(String)
+2024-3月-25 10:55:09.882 DEBUG [http-nio-8080-exec-7] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:55:09.882 DEBUG [http-nio-8080-exec-7] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=User(uid=1000, uname=admin, password=用户密码不可见, avatar=null, ema (truncated)...]
+2024-3月-25 10:55:09.884 DEBUG [http-nio-8080-exec-7] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:55:19.974 DEBUG [http-nio-8080-exec-4] o.s.w.s.DispatcherServlet - GET "/users", parameters={}
+2024-3月-25 10:55:19.974 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.UserController#getById(String)
+2024-3月-25 10:55:19.977 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:55:19.978 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=User(uid=1000, uname=admin, password=用户密码不可见, avatar=null, ema (truncated)...]
+2024-3月-25 10:55:19.978 DEBUG [http-nio-8080-exec-4] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:55:25.837 DEBUG [http-nio-8080-exec-5] o.s.w.s.DispatcherServlet - GET "/users", parameters={}
+2024-3月-25 10:55:25.837 DEBUG [http-nio-8080-exec-6] o.s.w.s.DispatcherServlet - GET "/actors/all", parameters={}
+2024-3月-25 10:55:25.837 DEBUG [http-nio-8080-exec-5] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.UserController#getById(String)
+2024-3月-25 10:55:25.838 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllActor()
+2024-3月-25 10:55:25.841 DEBUG [http-nio-8080-exec-5] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:55:25.841 DEBUG [http-nio-8080-exec-5] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=User(uid=1000, uname=admin, password=用户密码不可见, avatar=null, ema (truncated)...]
+2024-3月-25 10:55:25.842 DEBUG [http-nio-8080-exec-5] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:55:25.878 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:55:25.879 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_ERR, msg=查询失败, data=null)]
+2024-3月-25 10:55:25.879 DEBUG [http-nio-8080-exec-6] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:55:31.740 DEBUG [http-nio-8080-exec-3] o.s.w.s.DispatcherServlet - GET "/actors/all", parameters={}
+2024-3月-25 10:55:31.740 DEBUG [http-nio-8080-exec-3] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllActor()
+2024-3月-25 10:55:31.755 DEBUG [http-nio-8080-exec-3] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:55:31.756 DEBUG [http-nio-8080-exec-3] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_ERR, msg=查询失败, data=null)]
+2024-3月-25 10:55:31.756 DEBUG [http-nio-8080-exec-3] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:07.412 DEBUG [http-nio-8080-exec-8] o.s.w.s.DispatcherServlet - GET "/events/all", parameters={}
+2024-3月-25 10:56:07.412 DEBUG [http-nio-8080-exec-8] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.EventController#fndAllEvents()
+2024-3月-25 10:56:07.432 DEBUG [http-nio-8080-exec-8] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:07.436 DEBUG [http-nio-8080-exec-8] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=[Event(eid=1000, eName=黄巾起义, eContent=光和六年（癸亥，公元183年）<EOL><EOL>最初，钜鹿人张 (truncated)...]
+2024-3月-25 10:56:07.440 DEBUG [http-nio-8080-exec-8] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:09.180 DEBUG [http-nio-8080-exec-9] o.s.w.s.DispatcherServlet - GET "/actors/all", parameters={}
+2024-3月-25 10:56:09.180 DEBUG [http-nio-8080-exec-9] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllActor()
+2024-3月-25 10:56:09.192 DEBUG [http-nio-8080-exec-9] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:09.192 DEBUG [http-nio-8080-exec-9] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_ERR, msg=查询失败, data=null)]
+2024-3月-25 10:56:09.192 DEBUG [http-nio-8080-exec-9] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:12.586 DEBUG [http-nio-8080-exec-10] o.s.w.s.DispatcherServlet - GET "/actors/all", parameters={}
+2024-3月-25 10:56:12.587 DEBUG [http-nio-8080-exec-10] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllActor()
+2024-3月-25 10:56:12.596 DEBUG [http-nio-8080-exec-10] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:12.596 DEBUG [http-nio-8080-exec-10] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_ERR, msg=查询失败, data=null)]
+2024-3月-25 10:56:12.597 DEBUG [http-nio-8080-exec-10] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:21.088 DEBUG [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet - GET "/actors/all", parameters={}
+2024-3月-25 10:56:21.088 DEBUG [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - GET "/users", parameters={}
+2024-3月-25 10:56:21.088 DEBUG [http-nio-8080-exec-2] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllActor()
+2024-3月-25 10:56:21.088 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.UserController#getById(String)
+2024-3月-25 10:56:21.091 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:21.091 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=User(uid=1000, uname=admin, password=用户密码不可见, avatar=null, ema (truncated)...]
+2024-3月-25 10:56:21.092 DEBUG [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:21.096 DEBUG [http-nio-8080-exec-2] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:21.096 DEBUG [http-nio-8080-exec-2] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_ERR, msg=查询失败, data=null)]
+2024-3月-25 10:56:21.096 DEBUG [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:22.469 DEBUG [http-nio-8080-exec-7] o.s.w.s.DispatcherServlet - GET "/events/all", parameters={}
+2024-3月-25 10:56:22.470 DEBUG [http-nio-8080-exec-7] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.EventController#fndAllEvents()
+2024-3月-25 10:56:22.481 DEBUG [http-nio-8080-exec-7] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:22.482 DEBUG [http-nio-8080-exec-7] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=[Event(eid=1000, eName=黄巾起义, eContent=光和六年（癸亥，公元183年）<EOL><EOL>最初，钜鹿人张 (truncated)...]
+2024-3月-25 10:56:22.486 DEBUG [http-nio-8080-exec-7] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:23.424 DEBUG [http-nio-8080-exec-4] o.s.w.s.DispatcherServlet - GET "/actors/all", parameters={}
+2024-3月-25 10:56:23.425 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllActor()
+2024-3月-25 10:56:23.437 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:23.437 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_ERR, msg=查询失败, data=null)]
+2024-3月-25 10:56:23.437 DEBUG [http-nio-8080-exec-4] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:27.758 DEBUG [http-nio-8080-exec-5] o.s.w.s.DispatcherServlet - GET "/users", parameters={}
+2024-3月-25 10:56:27.758 DEBUG [http-nio-8080-exec-5] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.UserController#getById(String)
+2024-3月-25 10:56:27.760 DEBUG [http-nio-8080-exec-5] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:27.760 DEBUG [http-nio-8080-exec-5] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=User(uid=1000, uname=admin, password=用户密码不可见, avatar=null, ema (truncated)...]
+2024-3月-25 10:56:27.761 DEBUG [http-nio-8080-exec-5] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:29.051 DEBUG [http-nio-8080-exec-6] o.s.w.s.DispatcherServlet - GET "/users", parameters={}
+2024-3月-25 10:56:29.051 DEBUG [http-nio-8080-exec-3] o.s.w.s.DispatcherServlet - GET "/actors?current=1&size=11", parameters={masked}
+2024-3月-25 10:56:29.052 DEBUG [http-nio-8080-exec-3] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllToPage(Long, Long)
+2024-3月-25 10:56:29.052 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.UserController#getById(String)
+2024-3月-25 10:56:29.057 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:29.057 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=User(uid=1000, uname=admin, password=用户密码不可见, avatar=null, ema (truncated)...]
+2024-3月-25 10:56:29.059 DEBUG [http-nio-8080-exec-6] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:29.132 DEBUG [http-nio-8080-exec-3] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:29.132 DEBUG [http-nio-8080-exec-3] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=com.baomidou.mybatisplus.extension.plugins.pagination.Page@13d (truncated)...]
+2024-3月-25 10:56:29.135 DEBUG [http-nio-8080-exec-3] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:39.183 DEBUG [http-nio-8080-exec-9] o.s.w.s.DispatcherServlet - GET "/events?current=1&size=11", parameters={masked}
+2024-3月-25 10:56:39.183 DEBUG [http-nio-8080-exec-8] o.s.w.s.DispatcherServlet - GET "/users", parameters={}
+2024-3月-25 10:56:39.184 DEBUG [http-nio-8080-exec-8] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.UserController#getById(String)
+2024-3月-25 10:56:39.184 DEBUG [http-nio-8080-exec-9] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.EventController#findAllToPage(Long, Long)
+2024-3月-25 10:56:39.187 DEBUG [http-nio-8080-exec-8] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:39.187 DEBUG [http-nio-8080-exec-8] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=User(uid=1000, uname=admin, password=用户密码不可见, avatar=null, ema (truncated)...]
+2024-3月-25 10:56:39.188 DEBUG [http-nio-8080-exec-8] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:39.189 DEBUG [http-nio-8080-exec-9] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:39.189 DEBUG [http-nio-8080-exec-9] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=com.baomidou.mybatisplus.extension.plugins.pagination.Page@6fc (truncated)...]
+2024-3月-25 10:56:39.190 DEBUG [http-nio-8080-exec-9] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:40.506 DEBUG [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - GET "/actors?current=1&size=11", parameters={masked}
+2024-3月-25 10:56:40.506 DEBUG [http-nio-8080-exec-10] o.s.w.s.DispatcherServlet - GET "/users", parameters={}
+2024-3月-25 10:56:40.507 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllToPage(Long, Long)
+2024-3月-25 10:56:40.507 DEBUG [http-nio-8080-exec-10] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.UserController#getById(String)
+2024-3月-25 10:56:40.510 DEBUG [http-nio-8080-exec-10] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:40.510 DEBUG [http-nio-8080-exec-10] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=User(uid=1000, uname=admin, password=用户密码不可见, avatar=null, ema (truncated)...]
+2024-3月-25 10:56:40.511 DEBUG [http-nio-8080-exec-10] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:40.514 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:40.514 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=com.baomidou.mybatisplus.extension.plugins.pagination.Page@72f (truncated)...]
+2024-3月-25 10:56:40.517 DEBUG [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:43.517 DEBUG [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet - GET "/actors?current=2&size=11", parameters={masked}
+2024-3月-25 10:56:43.517 DEBUG [http-nio-8080-exec-2] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllToPage(Long, Long)
+2024-3月-25 10:56:43.523 DEBUG [http-nio-8080-exec-2] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:43.524 DEBUG [http-nio-8080-exec-2] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=com.baomidou.mybatisplus.extension.plugins.pagination.Page@764 (truncated)...]
+2024-3月-25 10:56:43.524 DEBUG [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:44.056 DEBUG [http-nio-8080-exec-7] o.s.w.s.DispatcherServlet - GET "/actors?current=3&size=11", parameters={masked}
+2024-3月-25 10:56:44.056 DEBUG [http-nio-8080-exec-7] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllToPage(Long, Long)
+2024-3月-25 10:56:44.060 DEBUG [http-nio-8080-exec-7] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:44.061 DEBUG [http-nio-8080-exec-7] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=com.baomidou.mybatisplus.extension.plugins.pagination.Page@6a7 (truncated)...]
+2024-3月-25 10:56:44.061 DEBUG [http-nio-8080-exec-7] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:45.187 DEBUG [http-nio-8080-exec-4] o.s.w.s.DispatcherServlet - GET "/actors?current=6&size=11", parameters={masked}
+2024-3月-25 10:56:45.187 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllToPage(Long, Long)
+2024-3月-25 10:56:45.192 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:45.192 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=com.baomidou.mybatisplus.extension.plugins.pagination.Page@3e3 (truncated)...]
+2024-3月-25 10:56:45.193 DEBUG [http-nio-8080-exec-4] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:45.566 DEBUG [http-nio-8080-exec-5] o.s.w.s.DispatcherServlet - GET "/actors?current=5&size=11", parameters={masked}
+2024-3月-25 10:56:45.567 DEBUG [http-nio-8080-exec-5] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllToPage(Long, Long)
+2024-3月-25 10:56:45.574 DEBUG [http-nio-8080-exec-5] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:45.574 DEBUG [http-nio-8080-exec-5] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=com.baomidou.mybatisplus.extension.plugins.pagination.Page@5f0 (truncated)...]
+2024-3月-25 10:56:45.575 DEBUG [http-nio-8080-exec-5] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:45.997 DEBUG [http-nio-8080-exec-6] o.s.w.s.DispatcherServlet - GET "/actors?current=4&size=11", parameters={masked}
+2024-3月-25 10:56:45.998 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllToPage(Long, Long)
+2024-3月-25 10:56:46.005 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:46.005 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=com.baomidou.mybatisplus.extension.plugins.pagination.Page@220 (truncated)...]
+2024-3月-25 10:56:46.006 DEBUG [http-nio-8080-exec-6] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:46.349 DEBUG [http-nio-8080-exec-3] o.s.w.s.DispatcherServlet - GET "/actors?current=3&size=11", parameters={masked}
+2024-3月-25 10:56:46.349 DEBUG [http-nio-8080-exec-3] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllToPage(Long, Long)
+2024-3月-25 10:56:46.354 DEBUG [http-nio-8080-exec-3] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:46.354 DEBUG [http-nio-8080-exec-3] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=com.baomidou.mybatisplus.extension.plugins.pagination.Page@5d3 (truncated)...]
+2024-3月-25 10:56:46.355 DEBUG [http-nio-8080-exec-3] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:46.680 DEBUG [http-nio-8080-exec-8] o.s.w.s.DispatcherServlet - GET "/actors?current=2&size=11", parameters={masked}
+2024-3月-25 10:56:46.680 DEBUG [http-nio-8080-exec-8] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllToPage(Long, Long)
+2024-3月-25 10:56:46.686 DEBUG [http-nio-8080-exec-8] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:46.687 DEBUG [http-nio-8080-exec-8] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=com.baomidou.mybatisplus.extension.plugins.pagination.Page@4a6 (truncated)...]
+2024-3月-25 10:56:46.687 DEBUG [http-nio-8080-exec-8] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:47.027 DEBUG [http-nio-8080-exec-9] o.s.w.s.DispatcherServlet - GET "/actors?current=1&size=11", parameters={masked}
+2024-3月-25 10:56:47.028 DEBUG [http-nio-8080-exec-9] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllToPage(Long, Long)
+2024-3月-25 10:56:47.032 DEBUG [http-nio-8080-exec-9] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:47.032 DEBUG [http-nio-8080-exec-9] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=com.baomidou.mybatisplus.extension.plugins.pagination.Page@74c (truncated)...]
+2024-3月-25 10:56:47.033 DEBUG [http-nio-8080-exec-9] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:51.502 DEBUG [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - GET "/powers/10000", parameters={}
+2024-3月-25 10:56:51.502 DEBUG [http-nio-8080-exec-10] o.s.w.s.DispatcherServlet - GET "/users", parameters={}
+2024-3月-25 10:56:51.503 DEBUG [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet - GET "/powers", parameters={}
+2024-3月-25 10:56:51.503 DEBUG [http-nio-8080-exec-10] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.UserController#getById(String)
+2024-3月-25 10:56:51.503 DEBUG [http-nio-8080-exec-2] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.PowerController#getPowerList()
+2024-3月-25 10:56:51.503 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.PowerController#getPowerById(Long)
+2024-3月-25 10:56:51.506 DEBUG [http-nio-8080-exec-10] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:51.506 DEBUG [http-nio-8080-exec-10] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=User(uid=1000, uname=admin, password=用户密码不可见, avatar=null, ema (truncated)...]
+2024-3月-25 10:56:51.507 DEBUG [http-nio-8080-exec-10] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:51.524 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:51.525 DEBUG [http-nio-8080-exec-2] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:51.525 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=Power(pid=10000, pname=黄巾起义, paddr={卜己={addr=[兖州, 东郡, 东平国, 济北国 (truncated)...]
+2024-3月-25 10:56:51.525 DEBUG [http-nio-8080-exec-2] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=[Power(pid=10000, pname=黄巾起义, paddr={卜己={addr=[兖州, 东郡, 东平国, 济北 (truncated)...]
+2024-3月-25 10:56:51.532 DEBUG [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:51.532 DEBUG [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:56:58.039 DEBUG [http-nio-8080-exec-7] o.s.w.s.DispatcherServlet - GET "/powers/10001", parameters={}
+2024-3月-25 10:56:58.040 DEBUG [http-nio-8080-exec-7] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.PowerController#getPowerById(Long)
+2024-3月-25 10:56:58.043 DEBUG [http-nio-8080-exec-7] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:56:58.043 DEBUG [http-nio-8080-exec-7] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=Power(pid=10001, pname=诸侯讨董, paddr={刘岱={addr=[兖州, 东郡, 东平国, 济北国 (truncated)...]
+2024-3月-25 10:56:58.044 DEBUG [http-nio-8080-exec-7] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:57:02.556 DEBUG [http-nio-8080-exec-4] o.s.w.s.DispatcherServlet - GET "/powers/10000", parameters={}
+2024-3月-25 10:57:02.556 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.PowerController#getPowerById(Long)
+2024-3月-25 10:57:02.558 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:57:02.558 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=Power(pid=10000, pname=黄巾起义, paddr={卜己={addr=[兖州, 东郡, 东平国, 济北国 (truncated)...]
+2024-3月-25 10:57:02.559 DEBUG [http-nio-8080-exec-4] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:57:05.837 DEBUG [http-nio-8080-exec-5] o.s.w.s.DispatcherServlet - GET "/powers/10001", parameters={}
+2024-3月-25 10:57:05.838 DEBUG [http-nio-8080-exec-5] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.PowerController#getPowerById(Long)
+2024-3月-25 10:57:05.841 DEBUG [http-nio-8080-exec-5] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:57:05.841 DEBUG [http-nio-8080-exec-5] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=Power(pid=10001, pname=诸侯讨董, paddr={刘岱={addr=[兖州, 东郡, 东平国, 济北国 (truncated)...]
+2024-3月-25 10:57:05.842 DEBUG [http-nio-8080-exec-5] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:57:09.451 DEBUG [http-nio-8080-exec-6] o.s.w.s.DispatcherServlet - GET "/users", parameters={}
+2024-3月-25 10:57:09.451 DEBUG [http-nio-8080-exec-3] o.s.w.s.DispatcherServlet - GET "/msgs/all?current=1&size=10", parameters={masked}
+2024-3月-25 10:57:09.452 DEBUG [http-nio-8080-exec-3] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.MsgController#getAll(Long, Long)
+2024-3月-25 10:57:09.452 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.UserController#getById(String)
+2024-3月-25 10:57:09.455 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:57:09.456 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=User(uid=1000, uname=admin, password=用户密码不可见, avatar=null, ema (truncated)...]
+2024-3月-25 10:57:09.456 DEBUG [http-nio-8080-exec-6] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:57:09.505 DEBUG [http-nio-8080-exec-3] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:57:09.505 DEBUG [http-nio-8080-exec-3] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=com.baomidou.mybatisplus.extension.plugins.pagination.Page@409 (truncated)...]
+2024-3月-25 10:57:09.509 DEBUG [http-nio-8080-exec-3] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:57:09.527 DEBUG [http-nio-8080-exec-9] o.s.w.s.DispatcherServlet - GET "/image/c1453b1a-0c23-4ed0-b02c-dd4b6cdd2057.png", parameters={}
+2024-3月-25 10:57:09.527 DEBUG [http-nio-8080-exec-8] o.s.w.s.DispatcherServlet - GET "/image/2ef38e6b-58cd-493d-9af5-0c37e4965fcc.png", parameters={}
+2024-3月-25 10:57:09.527 DEBUG [http-nio-8080-exec-10] o.s.w.s.DispatcherServlet - GET "/image/1f6419da-f897-4222-bf37-1363bc0384a3.png", parameters={}
+2024-3月-25 10:57:09.527 DEBUG [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet - GET "/image/14694fc5-8a9a-471b-8cac-886183b43637.png", parameters={}
+2024-3月-25 10:57:09.531 DEBUG [http-nio-8080-exec-8] o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:D:/毕设/avatarImages/]]
+2024-3月-25 10:57:09.531 DEBUG [http-nio-8080-exec-9] o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:D:/毕设/avatarImages/]]
+2024-3月-25 10:57:09.531 DEBUG [http-nio-8080-exec-2] o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:D:/毕设/avatarImages/]]
+2024-3月-25 10:57:09.531 DEBUG [http-nio-8080-exec-10] o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [URL [file:D:/毕设/avatarImages/]]
+2024-3月-25 10:57:09.536 DEBUG [http-nio-8080-exec-9] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:57:09.540 DEBUG [http-nio-8080-exec-10] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:57:09.541 DEBUG [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:57:09.541 DEBUG [http-nio-8080-exec-8] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:57:11.798 DEBUG [http-nio-8080-exec-7] o.s.w.s.DispatcherServlet - GET "/msgs/c/2000", parameters={}
+2024-3月-25 10:57:11.798 DEBUG [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - GET "/users", parameters={}
+2024-3月-25 10:57:11.798 DEBUG [http-nio-8080-exec-4] o.s.w.s.DispatcherServlet - GET "/msgs/m/2000", parameters={}
+2024-3月-25 10:57:11.798 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.UserController#getById(String)
+2024-3月-25 10:57:11.799 DEBUG [http-nio-8080-exec-7] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.MsgController#getMsgComment(Long)
+2024-3月-25 10:57:11.799 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.MsgController#findByMid(Long)
+2024-3月-25 10:57:11.804 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:57:11.804 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=User(uid=1000, uname=admin, password=用户密码不可见, avatar=null, ema (truncated)...]
+2024-3月-25 10:57:11.804 DEBUG [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:57:11.805 DEBUG [http-nio-8080-exec-7] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:57:11.811 DEBUG [http-nio-8080-exec-7] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=[Comment(cid=3000, mid=2000, uid=1001, uname=user, avatar=http (truncated)...]
+2024-3月-25 10:57:11.812 DEBUG [http-nio-8080-exec-7] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:57:11.814 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:57:11.819 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data={msg=Msg(mid=2000, uid=1006, userAvatar=null, userName=null, v (truncated)...]
+2024-3月-25 10:57:11.820 DEBUG [http-nio-8080-exec-4] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:57:22.792 DEBUG [http-nio-8080-exec-6] o.s.w.s.DispatcherServlet - GET "/actors/all", parameters={}
+2024-3月-25 10:57:22.792 DEBUG [http-nio-8080-exec-5] o.s.w.s.DispatcherServlet - GET "/users", parameters={}
+2024-3月-25 10:57:22.792 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.ActorController#findAllActor()
+2024-3月-25 10:57:22.792 DEBUG [http-nio-8080-exec-5] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.three_kingdoms.controller.UserController#getById(String)
+2024-3月-25 10:57:22.794 DEBUG [http-nio-8080-exec-5] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:57:22.794 DEBUG [http-nio-8080-exec-5] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_OK, msg=查询成功, data=User(uid=1000, uname=admin, password=用户密码不可见, avatar=null, ema (truncated)...]
+2024-3月-25 10:57:22.795 DEBUG [http-nio-8080-exec-5] o.s.w.s.DispatcherServlet - Completed 200 OK
+2024-3月-25 10:57:22.804 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2024-3月-25 10:57:22.804 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=SELECT_ERR, msg=查询失败, data=null)]
+2024-3月-25 10:57:22.805 DEBUG [http-nio-8080-exec-6] o.s.w.s.DispatcherServlet - Completed 200 OK
