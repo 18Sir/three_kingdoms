@@ -3,7 +3,7 @@ package com.three_kingdoms.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.three_kingdoms.domain.Msg;
-import com.three_kingdoms.services.impl.MsgServicesImpl;
+import com.three_kingdoms.services.MsgServices;
 import com.three_kingdoms.util.JWTUtil;
 import com.three_kingdoms.util.Verify;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +16,13 @@ import java.util.Map;
 @RequestMapping("/msgs")
 public class MsgController {
     @Autowired
-    private MsgServicesImpl msgServices;
+    private MsgServices msgServices;
     @Autowired
     private Verify verify;
 
     //获取全部帖子
     @GetMapping("/all")
-    public Result getAll(@RequestParam Long current, @RequestParam Long size) {
+    public Result getAllToPage(@RequestParam Long current, @RequestParam Long size) {
 
         Page p = new Page(current,size);
         IPage page = msgServices.findAll(p);
@@ -30,6 +30,12 @@ public class MsgController {
             return Result.selectSuccess(page);
         }
         return Result.error(ResultCode.SELECT_ERR,"暂无帖子");
+    }
+
+    //直接获取所有帖子
+    @GetMapping("")
+    public Result<List<Msg>> getAllNoPage(){
+        return msgServices.findAll();
     }
 
     //根据id查找帖子
@@ -92,9 +98,9 @@ public class MsgController {
         msg.setUid(JWTUtil.getTokenUid(token));
         Integer i = msgServices.save(msg);
         if(i > 0){
-            return Result.saveSuccess();
+            return Result.saveSuccess("发布成功！");
         }else
-            return Result.saveError();
+            return Result.saveError("发布失败！");
     }
     //删除帖子
     @DeleteMapping("/{mid}")
@@ -114,9 +120,14 @@ public class MsgController {
         }else{
             return Result.error(ResultCode.SELECT_ERR,"暂无该帖信息");
         }
-
-
     }
+
+//    删除更多
+    @DeleteMapping("/more")
+    public Result<Integer> deleteMore(@RequestBody List<Long> mids){
+        return msgServices.deleteMore(mids);
+    }
+
     //更新帖子
     @PutMapping
     public Result update(@RequestBody Msg msg){

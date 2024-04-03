@@ -3,6 +3,7 @@ package com.three_kingdoms.services.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.three_kingdoms.controller.Result;
 import com.three_kingdoms.dao.CommentDao;
 import com.three_kingdoms.dao.MsgDao;
 import com.three_kingdoms.dao.UserDao;
@@ -146,6 +147,18 @@ public class MsgServicesImpl implements MsgServices {
     }
 
     @Override
+    public Result<List<Msg>> findAll() {
+        List<Msg> msgList = msgDao.selectList(null);
+        for (Msg msg : msgList) {
+            User user = getUser(msg.getUid());
+            msg.setUserName(user.getUname());
+            msg.setUserAvatar(user.getAvatar());
+            msg.setCommentNum(getMsgComment(msg.getMid()).size());
+        }
+        return Result.selectSuccess(msgList);
+    }
+
+    @Override
     public Integer save(Msg msg) {
         msg.setVisits(0);
         msg.setLikes(0);
@@ -155,6 +168,16 @@ public class MsgServicesImpl implements MsgServices {
     @Override
     public Integer delete(Long mid) {
         return msgDao.deleteById(mid);
+    }
+
+    @Override
+    public Result<Integer> deleteMore(List<Long> mids) {
+        int i = msgDao.deleteBatchIds(mids);
+        if(i == mids.size()){
+            return Result.deleteSuccess();
+        }else{
+            return Result.deleteError("似乎有未删除的元素");
+        }
     }
 
     @Override

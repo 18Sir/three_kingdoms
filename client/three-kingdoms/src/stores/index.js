@@ -1,14 +1,18 @@
 import { getMsgsCommentService } from '@/api/comment'
+import { getUsersServices } from '@/api/user'
 import {createStore} from 'vuex'
 
-export default createStore({
+var store;
+
+export default store = createStore({
     state:{
         token:localStorage.getItem("token") ? localStorage.getItem("token") : "",
         comment:[],
         mapName:"map",
         mapIndex:0,
         pid:10000,
-        adminSearch:'人物'
+        adminSearch:'人物',
+        userData:{}
     },
     getters:{
         getToken(state){
@@ -28,6 +32,9 @@ export default createStore({
         },
         getAdminSearch(state){
             return state.adminSearch
+        },
+        getUserData(state){
+            return state.userData
         }
     },
     mutations:{
@@ -51,6 +58,9 @@ export default createStore({
         },
         setAdminSearch(state,value){
             state.adminSearch = value
+        },
+        setUserData(state,userData){
+            state.userData = userData;
         }
     },
     actions:{
@@ -59,6 +69,11 @@ export default createStore({
                 commit('getComment',res.data)
                 // comment = res.data;
               });
+        },
+        setUserData({commit}){
+            getUsersServices().then((res)=>[
+                commit('setUserData',res.data)
+            ])
         }
     }
 })

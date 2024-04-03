@@ -61,13 +61,19 @@
           'btime',
           'dtime',
           'addrId',
-          'events',
+          'Addrs',
           'story',
           'power',
         ]"
       >
         <template #paginatorstart>
-          <Button type="button" icon="pi pi-refresh" text label="刷新" @click="refresh" />
+          <Button
+            type="button"
+            icon="pi pi-refresh"
+            text
+            label="刷新"
+            @click="refresh"
+          />
         </template>
         <template #header>
           <div class="flex justify-content-between">
@@ -165,14 +171,10 @@
             />
           </template>
         </Column>
-        <Column
-          field="addrId"
-          header="出生地点ID"
-          sortable
-          style="min-width: 8rem"
-        >
+        <Column field="addrId" header="出生地" sortable style="min-width: 8rem">
           <template #body="{ data }">
-            {{ data.addrId }}
+            {{ data.addr.state ? data.addr.state + "-" : "" }}
+            {{ data.addr.addrName ? data.addr.addrName : "暂无数据" }}
           </template>
           <template #filter="{ filterModel, filterCallback }">
             <InputText
@@ -180,19 +182,23 @@
               type="text"
               @input="filterCallback()"
               class="p-column-filter"
-              placeholder="按出生地点ID查找"
+              placeholder="按出生地查找"
             />
           </template>
         </Column>
         <Column
           field="events"
-          header="参与事件ID组"
+          header="参与事件"
           sortable
-          style="min-width: 10rem"
+          style="min-width: 15rem"
         >
           <template #body="{ data }">
             <el-text line-clamp="2">
-              {{ data.events }}
+              <span v-for="(item, index) in data.eventList" :key="index">
+                {{ item.ename }}
+                {{ index < data.eventList.length - 1 ? " , " : "" }}
+              </span>
+              {{ data.eventList.length > 0 ? "" : "暂无数据" }}
             </el-text>
           </template>
           <template #filter="{ filterModel, filterCallback }">
@@ -209,12 +215,24 @@
           field="story"
           header="传记内容"
           sortable
-          style="min-width: 12rem; max-width: 20rem"
+          style="min-width: 25rem; max-width: 30rem"
         >
           <template #body="{ data }">
-            <el-text line-clamp="2">
-              {{ data.story }}
-            </el-text>
+            <Inplace :closable="true">
+              <template #closeicon>
+                <span class="pi pi-eye-slash"></span>
+              </template>
+              <template #display>
+                <el-text line-clamp="2">{{
+                  data.story ? data.story : "暂无数据"
+                }}</el-text>
+              </template>
+              <template #content>
+                <p class="m-0">
+                  {{ data.story ? data.story : "暂无数据" }}
+                </p>
+              </template>
+            </Inplace>
           </template>
           <template #filter="{ filterModel, filterCallback }">
             <InputText
@@ -295,12 +313,29 @@
         <InputText id="dtime" v-model.trim="actorData.dtime" autofocus />
       </div>
       <div class="field">
-        <label for="addrId">出生地Id</label>
-        <InputText id="addrId" v-model.trim="actorData.addrId" autofocus />
+        <label for="addrId">出生地</label><br/>
+        <el-cascader
+          id="addrId"
+          placeholder="选择一个地点"
+          v-model="actorData.addrId"
+          :options="addrs"
+          :props="addrProps"
+          filterable
+          :show-all-levels="false"
+        />
       </div>
       <div class="field">
-        <label for="events">参与事件id数组</label>
-        <Textarea id="events" v-model="actorData.events" rows="2" cols="20" />
+        <label for="Addrs">参与事件组</label>
+        <MultiSelect
+          v-model="actorData.events"
+          :options="events"
+          filter
+          optionLabel="name"
+          display="chip"
+          placeholder="请选择事件"
+          class="w-full md:w-20rem"
+          :maxSelectedLabels="3"
+        />
       </div>
       <div class="field">
         <label for="story">传记内容</label>
@@ -384,24 +419,33 @@ import {
   updateActorService,
   delActorMoreService,
 } from "@/api/actor";
+import {
+  getAllAddrsNoPageService,
+  getAllAddrStateService,
+  getAllAddrStateToCascadeService,
+} from "@/api/addr";
+import { getAllEventsNoPageService } from "@/api/event";
 import Column from "primevue/column";
 import DataTable from "primevue/datatable";
 import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
 import Toolbar from "primevue/toolbar";
+import Inplace from "primevue/inplace";
 import FileUpload from "primevue/fileupload";
 import Dialog from "primevue/dialog";
 import Textarea from "primevue/textarea";
 // import { useToast } from "primevue/usetoast";
 import { ref, onMounted } from "vue";
 import { FilterMatchMode } from "primevue/api";
-import { Delete, Edit } from "@element-plus/icons-vue";
+import Dropdown from "primevue/dropdown";
 import "@/assets/dataTable.css";
 import { ElMessage } from "element-plus";
 
 const actorDatas = ref([]);
 const actorData = ref();
 const loading = ref(false);
+const addrs = ref([]);
+const events = ref([]);
 //筛选
 const filters = ref({
   global: { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -424,11 +468,44 @@ const getActorDatas = () => {
   });
 };
 
+// 获取地点信息
+const getAddrs = () => {
+  getAllAddrStateToCascadeService().then((res) => {
+    let arr = res.data.map((addr) => ({
+      name: addr.addrName,
+      code: addr.addrId,
+      children: addr.children.map((c) => ({
+        name: c.addrName,
+        code: c.addrId,
+      })),
+    }));
+    addrs.value = arr;
+    return arr;
+  });
+};
+
+// 获取事件信息
+const getEvents = () => {
+  getAllEventsNoPageService().then((res) => {
+    let arr = res.data.map((event) => ({
+      name: event.ename,
+      code: event.eid,
+    }));
+    events.value = arr;
+  });
+};
+
 onMounted(() => {
   getActorDatas();
+  getAddrs();
+  getEvents();
 });
 
 // const toast = useToast();
+const addrProps = {
+  value: "code",
+  label: "name",
+};
 const dt = ref();
 const actorDialog = ref(false);
 const deleteActorDialog = ref(false);
@@ -452,16 +529,20 @@ const hideDialog = () => {
 //提交新增数据
 const saveActor = () => {
   submitted.value = true;
+  actorData.value.addrId = actorData.value.addrId[1];
+  actorData.value.events = actorData.value.events
+    .map((event) => event.code)
+    .toString();
   if (actorData.value.afname.trim()) {
-    //新增数据
+    //新增数据;
     if (!actorData.value.aid) {
       saveActorService(actorData.value).then((res) => {
-        ElMessage.success("人物添加成功！");
+        ElMessage.success(res.msg);
         getActorDatas();
       });
     } else {
       updateActorService(actorData.value).then((res) => {
-        ElMessage.success("人物修改成功！");
+        ElMessage.success(res.msg);
         getActorDatas();
       });
     }
@@ -469,9 +550,23 @@ const saveActor = () => {
     actorData.value = {};
   }
 };
+// 转换eventList
+const eventListFormat = (eventList) => {
+  if (eventList == null) {
+    return null;
+  } else {
+    return eventList.map((event) => ({
+      name: event.ename,
+      code: event.eid,
+    }));
+  }
+};
+
 //编辑数据
 const editActor = (prod) => {
   actorData.value = { ...prod };
+  actorData.value.eventList = eventListFormat(actorData.value.eventList);
+  actorData.value.events = actorData.value.eventList;
   actorDialog.value = true;
 };
 //确认删除单个人物对话框
@@ -506,13 +601,13 @@ const deleteSelectedActors = () => {
   selectedActors.value = null;
 };
 
-const refresh = ()=>{
+const refresh = () => {
   loading.value = true;
-  setTimeout(()=>{
-    getActorDatas()
-  },1000)
+  setTimeout(() => {
+    getActorDatas();
+  }, 1000);
   // getActorDatas()
-}
+};
 
 const exportCSV = () => {
   dt.value.exportCSV();
@@ -530,7 +625,7 @@ const exportCSV = () => {
 .p-button .p-button-label {
   margin-left: 0.3rem;
 }
-.field label{
+.field label {
   font-weight: bold;
 }
 </style>

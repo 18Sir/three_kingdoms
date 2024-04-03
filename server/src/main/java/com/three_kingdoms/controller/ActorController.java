@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.three_kingdoms.domain.Actor;
 import com.three_kingdoms.domain.Addr;
 import com.three_kingdoms.domain.Event;
-import com.three_kingdoms.services.impl.ActorServicesImpl;
+import com.three_kingdoms.services.ActorServices;
 import com.three_kingdoms.util.Verify;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/actors")
 public class ActorController {
     @Resource
-    private ActorServicesImpl actorServices;
+    private ActorServices actorServices;
     @Resource
     private Verify verify;
     //分页查询所有人物
@@ -71,10 +71,10 @@ public class ActorController {
     @GetMapping("/e/{aid}")
     public Result findActorEvents(@PathVariable Long aid) {
         List<Event> eventList = actorServices.findEvents(aid);
-        if (eventList.size() > 0) {
+        if (eventList.isEmpty()) {
             return Result.selectSuccess(eventList);
         } else {
-            return Result.error(ResultCode.SELECT_ERR, "暂无数据");
+            return Result.selectSuccess(eventList, "暂无数据");
         }
     }
 

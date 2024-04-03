@@ -22,26 +22,26 @@
           <span>事件管理</span>
         </template>
       </el-menu-item>
-      <el-menu-item index="3">
+      <el-menu-item index="3" route="/admin/addr">
         <template #title>
           <span>地点管理</span>
         </template>
       </el-menu-item>
-      <el-menu-item index="4">
+      <el-menu-item index="4" route="/admin/power">
         <template #title>
           <span>势力管理</span>
         </template>
       </el-menu-item>
-      <el-sub-menu index="5">
+      <el-sub-menu index="5" route="/admin/msg">
         <template #title>
           <span>帖子管理</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="5-1">帖子列表</el-menu-item>
-          <el-menu-item index="5-2">审核帖子</el-menu-item>
+          <el-menu-item index="5-1" route="/admin/msg/list">帖子列表</el-menu-item>
+          <el-menu-item index="5-2" route="/admin/msg/type">帖子类型</el-menu-item>
         </el-menu-item-group>
       </el-sub-menu>
-      <el-menu-item index="6">
+      <el-menu-item index="6" route="/admin/user">
         <template #title>
           <span>用户管理</span>
         </template>
@@ -68,8 +68,16 @@ onMounted(()=>{
     activeIndex.value = '1'
   }else if(path.includes('event')){
     activeIndex.value = '2'
-  }else{
-    activeIndex.value = '1'
+  }else if(path.includes('addr')){
+    activeIndex.value = '3'
+  }else if(path.includes('power')){
+    activeIndex.value = '4'
+  }else if(path.includes('msg/list')){
+    activeIndex.value = '5-1'
+  }else if(path.includes('msg/type')){
+    activeIndex.value = '5-2'
+  }else if(path.includes('user')){
+    activeIndex.value = '6'
   }
 })
 </script>

@@ -10,7 +10,7 @@ import router from '@/router';
 
 const instance = axios.create({
     baseURL: '/api',
-    timeout:1000
+    timeout:10000
 })
 
 //添加响应拦截器
@@ -31,6 +31,7 @@ instance.interceptors.response.use((res) => {
         resolve(res.data)
     })
 }, err => {
+    console.log(err);
     if(err.response.status === 401){
         ElMessage.error('请先登录')
         if(router.currentRoute.value.path !== '/'){

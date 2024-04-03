@@ -1,9 +1,6 @@
 package com.three_kingdoms.domain;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,4 +20,6 @@ public class Power {
     private Map<String,Object> paddr;
     @TableField(typeHandler = JacksonTypeHandler.class)
     private Map<String,Object> pactor;
+    @TableLogic(value = "0",delval = "1")
+    private Integer isDelete;
 }

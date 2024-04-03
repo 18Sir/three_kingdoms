@@ -27,7 +27,10 @@ public class Addr {
     private String eids;
     //事件信息
     @TableField(exist = false)
-    private List<Event> events;
+    private List<Event> eventList;
+    //子地点
+    @TableField(exist = false)
+    private List<Addr> children;
     //逻辑删除
     @TableLogic(value = "0",delval = "1")
     private Integer deleted;

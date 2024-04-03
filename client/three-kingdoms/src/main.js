@@ -5,6 +5,8 @@ import store from './stores'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import PrimeVue from "primevue/config";
 import Tooltip from 'primevue/tooltip';
+import ElementPlus from 'element-plus'
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
 //css样式
 import "element-plus/theme-chalk/el-loading.css";
@@ -21,4 +23,6 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
 
-app.use(router).use(store).use(PrimeVue).directive('tooltip', Tooltip).mount('#app')
+app.use(router).use(store).use(ElementPlus, {
+  locale: zhCn,
+}).use(PrimeVue).directive('tooltip', Tooltip).mount('#app')

@@ -10,21 +10,25 @@ import java.util.List;
 
 public interface ActorServices {
     //分页查询所有人物
-    public IPage findAllToPage(Long current,Long size);
+    IPage<Actor> findAllToPage(Long current,Long size);
+    //直接查询全部人物
+    List<Actor> findAllActor();
     //按名或字分页查询所有人物
-    public IPage findAllByName(String name, Page page);
+    IPage<Actor> findAllByName(String name, Page<Actor> page);
     //按id查询人物
-    public Actor findById(Long aid);
+    Actor findById(Long aid);
     //查找人物参与的历史事件
-    public List<Event> findEvents(Long aid);
+    List<Event> findEvents(Long aid);
     //查找人物的出生地
-    public Addr findActorAddr(Long aid);
+    Addr findActorAddr(Long aid);
     //根据势力范围查找
-    public IPage findAllByPower(IPage p,String name,String[] powers);
+    IPage<Actor> findAllByPower(IPage<Actor> p,String name,String[] powers);
     //增加人物
-    public Integer save(Actor actor);
+    Integer save(Actor actor);
     //删除人物
-    public Integer delete(Long aid);
+    Integer delete(Long aid);
+    //删除更多
+    Integer deleteMore(List<Long> aids);
     //修改人物
-    public Integer update(Actor actor);
+    Integer update(Actor actor);
 }

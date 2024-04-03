@@ -4,16 +4,16 @@
       <Splitter style="height: auto">
         <SplitterPanel
           class="flex align-items-start justify-content-center"
-          style="padding-top: 15px;"
+          style="padding-top: 15px;position: relative;"
           :size="10"
           :minSize="7"
         >
-          <div style="position: fixed;">
+          <!-- <div style="width: 5rem;"> -->
             <el-row class="tac">
               <el-col :span="24">
                 <el-affix :offset="90">
                   <h5 class="mb-2">相关人物</h5>
-                  <el-menu class="el-menu-vertical-demo" @select="selectActor">
+                  <el-menu @select="selectActor">
                     <el-menu-item-group
                       v-for="(item, index) in actorList"
                       :key="index"
@@ -27,7 +27,7 @@
                 </el-affix>
               </el-col>
             </el-row>
-          </div>
+          <!-- </div> -->
         </SplitterPanel>
         <SplitterPanel
           class="flex align-items-center justify-content-center"
@@ -126,6 +126,7 @@ const baseStory = ref("");
 //中间事件内容
 const getInfo = () => {
   getEventByIdService(eid.value).then((res) => {
+  console.log(res.data.econtent);
     let data = {
       story: storyFormat(res.data.econtent),
       title: res.data.ename,
@@ -175,7 +176,14 @@ watch(
 );
 </script>
 
-<style>
+<style scoped>
+  .el-main{
+    height: 80vh;
+  }
+
+.card{
+  width: 100%;
+}
 .el-menu-item {
   height: 30px;
 }

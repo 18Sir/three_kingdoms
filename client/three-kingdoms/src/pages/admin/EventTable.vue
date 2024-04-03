@@ -116,11 +116,28 @@
               placeholder="按事件名查找"
             /> </template
         ></Column>
-        <Column field="econtent" header="事件内容" sortable style="min-width: 15rem">
+        <Column
+          field="econtent"
+          header="事件内容"
+          sortable
+          style="min-width: 15rem"
+        >
           <template #body="{ data }">
-            <el-text line-clamp="2">
-              {{ data.econtent }}
-            </el-text>
+            <Inplace :closable="true">
+              <template #closeicon>
+                <span class="pi pi-eye-slash"></span>
+              </template>
+              <template #display>
+                <el-text line-clamp="2">
+                  {{ data.econtent }}
+                </el-text>
+              </template>
+              <template #content>
+                <p class="m-0">
+                  {{ data.econtent ? data.econtent : "暂无数据" }}
+                </p>
+              </template>
+            </Inplace>
           </template>
           <template #filter="{ filterModel, filterCallback }">
             <InputText
@@ -155,10 +172,32 @@
           field="addrs"
           header="涉及地点"
           sortable
-          style="min-width: 8rem;max-width: 15rem;"
+          style="min-width: 8rem; max-width: 15rem"
         >
           <template #body="{ data }">
-            {{ data.addrList }}
+            <Inplace :closable="true">
+              <template #closeicon>
+                <span class="pi pi-eye-slash"></span>
+              </template>
+              <template #display>
+                <el-text line-clamp="2">
+                  <span v-for="(item, index) in data.addrList" :key="index">
+                    {{ item.addrName }}
+                    {{ index < data.addrList.length - 1 ? " , " : "" }}
+                  </span>
+                  {{ data.addrList.length > 0 ? "" : "暂无数据" }}
+                </el-text>
+              </template>
+              <template #content>
+                <p class="m-0">
+                  <span v-for="(item, index) in data.addrList" :key="index">
+                    {{ item.addrName }}
+                    {{ index < data.addrList.length - 1 ? " , " : "" }}
+                  </span>
+                  {{ data.addrList.length > 0 ? "" : "暂无数据" }}
+                </p>
+              </template>
+            </Inplace>
           </template>
           <template #filter="{ filterModel, filterCallback }">
             <InputText
@@ -174,10 +213,32 @@
           field="aids"
           header="涉及人物"
           sortable
-          style="min-width: 8rem;max-width: 15rem;"
+          style="min-width: 8rem; max-width: 15rem"
         >
           <template #body="{ data }">
-            {{ data.actorList }}
+            <Inplace :closable="true">
+              <template #closeicon>
+                <span class="pi pi-eye-slash"></span>
+              </template>
+              <template #display>
+                <el-text line-clamp="2">
+                  <span v-for="(item, index) in data.actorList" :key="index">
+                    {{ item.afname }}
+                    {{ index < data.actorList.length - 1 ? " , " : "" }}
+                  </span>
+                  {{ data.actorList.length > 0 ? "" : "暂无数据" }}
+                </el-text>
+              </template>
+              <template #content>
+                <p class="m-0">
+                  <span v-for="(item, index) in data.actorList" :key="index">
+                    {{ item.afname }}
+                    {{ index < data.actorList.length - 1 ? " , " : "" }}
+                  </span>
+                  {{ data.actorList.length > 0 ? "" : "暂无数据" }}
+                </p>
+              </template>
+            </Inplace>
           </template>
           <template #filter="{ filterModel, filterCallback }">
             <InputText
@@ -233,7 +294,13 @@
       </div>
       <div class="field">
         <label for="econtent">事件内容</label>
-        <Textarea id="econtent" v-model.trim="data.econtent" required="true" rows="8" cols="25" />
+        <Textarea
+          id="econtent"
+          v-model.trim="data.econtent"
+          required="true"
+          rows="8"
+          cols="25"
+        />
         <small class="p-error" v-if="submitted && !data.econtent"
           >事件内容需要填写</small
         >
@@ -244,14 +311,35 @@
         <InputText id="etime" v-model.trim="data.etime" autofocus />
       </div>
       <div class="field">
-        <label for="addrs">涉及地点</label>
-        <InputText id="addrs" v-model.trim="data.addrs" autofocus />
+        <label for="addrs">涉及地点</label><br />
+        <el-cascader
+          id="addrId"
+          ref="addrRef"
+          placeholder="请选择地点"
+          v-model="data.addrs"
+          :options="addrs"
+          :props="addrProps"
+          filterable
+          collapse-tags
+          collapse-tags-tooltip
+          :max-collapse-tags="3"
+          @change="addrSelectChange"
+        />
       </div>
       <div class="field">
         <label for="aids">涉及人物</label>
-        <InputText id="aids" v-model.trim="data.aids" autofocus />
+        <MultiSelect
+          v-model="data.aids"
+          :options="actors"
+          filter
+          display="chip"
+          optionLabel="name"
+          placeholder="请选择人物"
+          :maxSelectedLabels="4"
+          class="w-full md:w-20rem"
+        />
       </div>
-      
+
       <template #footer>
         <Button label="取消" icon="pi pi-times" text @click="hideDialog" />
         <Button label="保存" icon="pi pi-check" text @click="saveData" />
@@ -319,6 +407,7 @@ import {
   delEventsService,
   updateEventService,
 } from "@/api/event";
+import { getAllAddrStateToCascadeService } from "@/api/addr";
 import Column from "primevue/column";
 import DataTable from "primevue/datatable";
 import IconField from "primevue/iconfield";
@@ -333,10 +422,13 @@ import { FilterMatchMode } from "primevue/api";
 import { Delete, Edit } from "@element-plus/icons-vue";
 import "@/assets/dataTable.css";
 import { ElMessage } from "element-plus";
+import { getAllActorNoPageService } from "@/api/actor";
 
 const datas = ref([]);
 const data = ref();
 const loading = ref(false);
+const addrs = ref();
+const actors = ref();
 //筛选
 const filters = ref({
   global: { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -348,7 +440,7 @@ const filters = ref({
   aids: { value: null, matchMode: FilterMatchMode.CONTAINS },
 });
 
-//获取人物内容
+//获取事件内容
 const getEventDatas = () => {
   getAllEventsNoPageService().then((res) => {
     datas.value = res.data;
@@ -356,9 +448,45 @@ const getEventDatas = () => {
   });
 };
 
+// 获取地点信息
+const getAddrs = () => {
+  getAllAddrStateToCascadeService().then((res) => {
+    let arr = res.data.map((addr) => ({
+      name: addr.addrName,
+      code: addr.addrId,
+      children: addr.children.map((c) => ({
+        name: c.addrName,
+        code: c.addrId,
+      })),
+    }));
+    addrs.value = arr;
+    return arr;
+  });
+};
+
+// 获取人物信息
+const getActors = () => {
+  getAllActorNoPageService().then((res) => {
+    let arr = res.data.map((actor) => ({
+      name: actor.afname,
+      code: actor.aid,
+    }));
+    actors.value = arr;
+  });
+};
+
 onMounted(() => {
   getEventDatas();
+  getAddrs();
+  getActors();
 });
+
+const addrProps = {
+  multiple: true,
+  value: "code",
+  label: "name",
+  checkStrictly: true,
+};
 
 // const toast = useToast();
 const dt = ref();
@@ -366,8 +494,21 @@ const dialog = ref(false);
 const deleteDataDialog = ref(false);
 const deleteDatasDialog = ref(false);
 const selectedDatas = ref();
-const powers = ref(["蜀", "魏", "吴", "群雄"]);
 const submitted = ref(false);
+//地点选择器绑定的ref
+const addrRef = ref();
+
+// 选中的地点更改
+const addrSelectChange = (value) => {
+  // let checkdNodeList = addrRef.value.getCheckedNodes();
+  // checkdNodeList = checkdNodeList.filter(
+  //   (item) => !(item.parent && item.parent.checked)
+  // );
+  // console.log(checkdNodeList);
+  // // addrRef.value = checkdNodeList
+  // data.value.addrs = checkdNodeList.map((item) => item.pathValues);
+  // console.log(data.value.addrs);
+};
 
 //创建新数据
 const openNew = () => {
@@ -384,16 +525,20 @@ const hideDialog = () => {
 //提交新增数据
 const saveData = () => {
   submitted.value = true;
+  data.value.addrs = data.value.addrs
+    .map((item) => (item[1] ? item[1] : item[0]))
+    .toString();
+  data.value.aids = data.value.aids.map((actor) => actor.code).toString();
   if (data.value.ename.trim() && data.value.econtent.trim()) {
     //新增数据
     if (!data.value.eid) {
       saveEventService(data.value).then((res) => {
-        ElMessage.success("人物添加成功！");
+        ElMessage.success(res.msg);
         getEventDatas();
       });
     } else {
       updateEventService(data.value).then((res) => {
-        ElMessage.success("人物修改成功！");
+        ElMessage.success(res.msg);
         getEventDatas();
       });
     }
@@ -404,15 +549,25 @@ const saveData = () => {
 //编辑数据
 const editData = (prod) => {
   data.value = { ...prod };
+  data.value.addrList = data.value.addrList.map((addr) => ({
+    name: addr.addrName,
+    code: addr.addrId,
+  }));
+  data.value.actorList = data.value.actorList.map((actor) => ({
+    name: actor.afname,
+    code: actor.aid,
+  }));
+  data.value.addrs = data.value.addrList.map((addr) => addr.code);
+  data.value.aids = data.value.actorList;
   dialog.value = true;
 };
-//确认删除单个人物对话框
+//确认删除单个事件对话框
 const confirmDeleteData = (prod) => {
   data.value = prod;
   deleteDataDialog.value = true;
 };
 
-//删除单个人物数据
+//删除单个事件数据
 const deleteData = () => {
   console.log("选中的数据", data.value.eid);
   delEventService(data.value.eid).then((res) => {
@@ -422,7 +577,7 @@ const deleteData = () => {
   deleteDataDialog.value = false;
   data.value = {};
 };
-//确认删除多个选中的人物对话框
+//确认删除多个选中的事件对话框
 const confirmDeleteSelected = () => {
   deleteDatasDialog.value = true;
 };

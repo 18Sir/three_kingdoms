@@ -3,30 +3,37 @@ package com.three_kingdoms.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.three_kingdoms.domain.Addr;
-import com.three_kingdoms.services.impl.AddrServicesImpl;
+import com.three_kingdoms.services.AddrServices;
 import com.three_kingdoms.util.Verify;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/addrs")
 public class AddrController {
     @Autowired
-    private AddrServicesImpl addrServices;
+    private AddrServices addrServices;
     @Autowired
     private Verify verify;
 
-    //查询全部
+    //分页查询全部
     @GetMapping
-    public Result findAll( @RequestParam Long current,
+    public Result findAllToPage( @RequestParam Long current,
                             @RequestParam Long size) {
         Page p = new Page(current,size);
-        IPage page = addrServices.findAll(p);
+        IPage page = addrServices.findAllToPage(p);
         if (page.getRecords() != null) {
             return Result.selectSuccess(page);
         } else {
             return Result.selectError();
         }
+    }
+
+    @GetMapping("/all")
+    public Result<List<Addr>> findAllNoPage(){
+        return addrServices.findAll();
     }
 
     //按id查询地点详细信息
@@ -38,6 +45,24 @@ public class AddrController {
         } else {
             return Result.selectError();
         }
+    }
+
+    //根据州查询所有郡
+    @GetMapping("/country")
+    public Result<List<Addr>> findCountryByState(@RequestParam String stateName){
+        return Result.selectSuccess(addrServices.findAllCountryByState(stateName));
+    }
+
+    //查询所有州
+    @GetMapping("/state")
+    public Result<List<Addr>> findAllState(){
+        return addrServices.findAllState();
+    }
+
+    //级联方式返回州
+    @GetMapping("/state/cascade")
+    public Result<List<Addr>> findAllStateToCascade(){
+        return addrServices.findAllStateToCascade();
     }
 
     //增加地点
@@ -84,6 +109,12 @@ public class AddrController {
         } else {
             return Result.error(ResultCode.DELETE_ERR, "无权操作");
         }
+    }
+
+    @DeleteMapping("/more")
+    public Result<Integer> deleteMore(@RequestHeader(name = "Authorization") String token ,
+                                      @RequestBody List<Long> addrIds){
+        return addrServices.deleteMore(addrIds);
     }
 
 }

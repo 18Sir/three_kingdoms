@@ -15,7 +15,7 @@
         <el-avatar :size="40" :src="userData.avatar" />
       </el-row>
     </template>
-    <el-menu-item index="" @click="goUser">个人主页</el-menu-item>
+    <el-menu-item index="" @click="goUser">个人中心</el-menu-item>
     <el-menu-item index="7-2" route="/login" @click="exitLogin"
       >退出登录</el-menu-item
     >

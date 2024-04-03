@@ -25,7 +25,7 @@
         </el-select>
       </el-row>
     </el-header>
-    <el-main>
+    <el-main class="main-box">
       <!-- 空数据时展示内容 -->
       <el-empty v-if="dataIsNull()" description="数据走丢了">
         <router-link to="/" style="text-decoration: none">
@@ -252,7 +252,8 @@ const getAllByNamePageData = (name, current) => {
 const getAllEventPageData = (current) => {
   getAllEventsService(current, pageOptions.value.pageSize)
     .then((res) => {
-      // console.log(res);
+      console.log(res);
+      res.data.records = getNameList(res.data.records);
       eventData.value = res.data.records;
       pageOptions.value.total = res.data.total;
     })
@@ -265,12 +266,27 @@ const getAllEventPageData = (current) => {
 const getAllByNameEventPageData = (name, current) => {
   getEventsByNameService(name, current, pageOptions.value.pageSize)
     .then((res) => {
+      res.data.records = getNameList(res.data.records);
       eventData.value = res.data.records;
       pageOptions.value.total = res.data.total;
     })
     .catch(() => {
       eventData.value = [];
     });
+};
+
+//事件内只提取人物和地区名
+const getNameList = (data) => {
+  if (data != null) {
+    data = data.map((item) => ({
+      eid: item.eid,
+      ename: item.ename,
+      etime: item.etime,
+      actorList: item.actorList.map((item2) => item2.afname),
+      addrList: item.addrList.map((item2) => item2.addrName),
+    }));
+  }
+  return data;
 };
 
 //分页改变事件
@@ -286,16 +302,15 @@ const eventRef = ref();
 //点击对应人物事件
 const clickHandle = (row, column, event) => {
   const path = router.currentRoute.value.path;
-  if(path.includes('actor')){
+  if (path.includes("actor")) {
     router.push({
-    path: `/actor/info/${row.aid}/${row.afname}`,
-  });
-  }else if(path.includes('event')){
+      path: `/actor/info/${row.aid}/${row.afname}`,
+    });
+  } else if (path.includes("event")) {
     router.push({
-    path: `/event/info/${row.eid}/${row.ename}`,
-  });
+      path: `/event/info/${row.eid}/${row.ename}`,
+    });
   }
-  
 };
 
 watch(
@@ -307,9 +322,13 @@ watch(
 );
 </script>
 
-<style>
+<style scoped>
 .el-table {
   width: 80%;
+}
+.main-box{
+  height: auto;
+  margin-bottom: 3rem;
 }
 .table-box {
   width: 100%;

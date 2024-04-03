@@ -27,12 +27,12 @@ public class Event {
     private String addrs;
     //事件地点的信息
     @TableField(exist = false)
-    private List addrList;
+    private List<Addr> addrList;
     //事件涉及人物
     private String aids;
     //事件人物的信息
     @TableField(exist = false)
-    private List actorList;
+    private List<Actor> actorList;
     //逻辑删除
     @TableLogic(value = "0",delval = "1")
     private Integer deleted;

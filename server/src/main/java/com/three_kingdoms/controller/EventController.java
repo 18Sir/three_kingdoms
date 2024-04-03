@@ -3,7 +3,7 @@ package com.three_kingdoms.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.three_kingdoms.domain.Event;
-import com.three_kingdoms.services.impl.EventServicesImpl;
+import com.three_kingdoms.services.EventServices;
 import com.three_kingdoms.util.Verify;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/events")
 public class EventController {
     @Autowired
-    private EventServicesImpl eventServices;
+    private EventServices eventServices;
     @Autowired
     private Verify verify;
 

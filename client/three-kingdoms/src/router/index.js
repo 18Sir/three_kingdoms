@@ -16,9 +16,9 @@ const routes = [
     },
     {
         path: "/actor",
-        redirect:"/actor/more/all",
+        redirect: "/actor/more/all",
         component: () => import("../pages/Actor.vue"),
-        
+
         children: [
             {
                 path: "more/:name",
@@ -32,7 +32,7 @@ const routes = [
     },
     {
         path: "/event",
-        redirect:"/event/more/all",
+        redirect: "/event/more/all",
         component: () => import("../pages/Event.vue"),
         children: [
             {
@@ -47,7 +47,7 @@ const routes = [
     },
     {
         path: "/discuss",
-        redirect:"/discuss/more",
+        redirect: "/discuss/more",
         component: () => import("../pages/Discuss.vue"),
         children: [
             {
@@ -66,11 +66,25 @@ const routes = [
     },
     {
         path: "/user",
-        component: () => import("../pages/User.vue")
+        component: () => import("../pages/User.vue"),
+        children: [
+            {
+                path: "setting",
+                component: () => import("../pages/views/UserSetting.vue")
+            },
+            {
+                path: "face",
+                component: () => import("../pages/views/UserFace.vue")
+            },
+            {
+                path: "secure",
+                component: () => import("../pages/views/UserSecure.vue"),
+            }
+        ]
     },
     {
-        path:"/admin",
-        redirect:"/admin/actor",
+        path: "/admin",
+        redirect: "/admin/actor",
         component: () => import("../pages/admin/Home.vue"),
         children: [
             {
@@ -80,7 +94,27 @@ const routes = [
             {
                 path: "event",
                 component: () => import("../pages/admin/EventTable.vue")
-            }
+            },
+            {
+                path: "addr",
+                component: () => import("../pages/admin/AddrTable.vue")
+            },
+            {
+                path: "power",
+                component: () => import("../pages/admin/PowerTable.vue")
+            },
+            {
+                path: "msg/list",
+                component: () => import("../pages/admin/MsgListTable.vue")
+            },
+            {
+                path: "msg/type",
+                component: () => import("../pages/admin/MsgTypeTable.vue")
+            },
+            {
+                path: "user",
+                component: () => import("../pages/admin/UserTable.vue")
+            },
         ]
     }
 
@@ -105,6 +139,15 @@ const router = createRouter({
 
     history: createWebHashHistory(),
     routes
+})
+
+router.beforeEach((to, from, next) => {
+    if (to.path === '/user') {
+        next({ path: 'user/setting' })
+    } else {
+        next()
+    }
+
 })
 
 export default router

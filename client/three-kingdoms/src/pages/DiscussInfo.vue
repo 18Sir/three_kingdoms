@@ -62,7 +62,7 @@
               </el-row>
             </div>
           </template>
-          {{ msgData.content }}
+          <div v-html="msgData.content"></div>
           <template #footer>
             <div class="footer-box">
               <div class="share-box">
@@ -104,6 +104,7 @@ import { onMounted, provide, ref } from "vue";
 import Share from "./views/Share.vue";
 import Comment from "./views/Comment.vue";
 import { Icon } from "@iconify/vue";
+import Image from 'primevue/image';
 
 //帖子数据
 const msgData = ref({});

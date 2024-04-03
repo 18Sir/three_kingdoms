@@ -1,7 +1,7 @@
 package com.three_kingdoms.controller;
 
 import com.three_kingdoms.domain.Comment;
-import com.three_kingdoms.services.impl.CommentServicesImpl;
+import com.three_kingdoms.services.CommentServices;
 import com.three_kingdoms.util.JWTUtil;
 import com.three_kingdoms.util.Verify;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/comments")
 public class CommentController {
     @Autowired
-    private CommentServicesImpl commentServices;
+    private CommentServices commentServices;
     @Autowired
     private Verify verify;
 

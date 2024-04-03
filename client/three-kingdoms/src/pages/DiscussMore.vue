@@ -1,5 +1,6 @@
 <template>
   <el-container class="discuss-box">
+    <UploadMsg />
     <el-aside
       :width="leftWidth"
       style="
@@ -30,28 +31,28 @@
         @select="changeMsgList"
       >
         <el-menu-item index="-1">
-          <el-icon><House /></el-icon>
+          <el-icon><i class="pi pi-tag"></i></el-icon>
           <template #title>全部</template>
         </el-menu-item>
-        <el-menu-item index="1">
-          <el-icon><UserFilled /></el-icon>
-          <template #title>人物解读</template>
-        </el-menu-item>
-        <el-menu-item index="2">
-          <el-icon><InfoFilled /></el-icon>
-          <template #title>事件分析</template>
-        </el-menu-item>
-        <el-menu-item index="3">
-          <el-icon><Location /></el-icon>
-          <template #title>地点说明</template>
-        </el-menu-item>
-        <el-menu-item index="0">
-          <el-icon><MoreFilled /></el-icon>
-          <template #title>其他</template>
+        <el-menu-item
+          v-for="item in msgTypeList"
+          :key="item.tid+''"
+          :index="item.tid+''"
+        >
+          <el-icon><i class="pi pi-tag"></i></el-icon>
+          <template #title>{{ item.tname }}</template>
         </el-menu-item>
       </el-menu>
     </el-aside>
-    <el-aside width="50%" style="height: 80%;margin: 5% 0px 0px 30px; background-color: #f8f4ed;align-self: flex-start;">
+    <el-aside
+      width="50%"
+      style="
+        height: 80%;
+        margin: 5% 0px 0px 30px;
+        background-color: #f8f4ed;
+        align-self: flex-start;
+      "
+    >
       <el-card
         class="msg-box"
         shadow="hover"
@@ -68,28 +69,40 @@
           <!-- 右侧帖子内容 -->
           <el-col :span="21">
             <el-text line-clamp="2" size="small">
-              <el-link class="title" :href="'http://localhost:5173/#/discuss/info/'+item.mid">{{ item.title }}</el-link
+              <el-link
+                class="title"
+                :href="'http://localhost:5173/#/discuss/info/' + item.mid"
+                >{{ item.title }}</el-link
               ><br />
-              {{ item.content }}
+              <div v-html="item.content"></div>
+              
             </el-text>
             <!-- 右侧下方图标 -->
             <el-row>
               <el-col :span="4" class="tabBox">
                 <el-text class="tabIcon"
-                  ><el-icon class="msg-icon"><View /></el-icon>&nbsp;{{ item.visits }}</el-text
+                  ><el-icon class="msg-icon"><View /></el-icon>&nbsp;{{
+                    item.visits
+                  }}</el-text
                 >
               </el-col>
               <el-col :span="4" class="tabBox">
                 <el-text class="tabIcon"
-                  ><Icon icon="uiw:like-o" class="msg-icon" />&nbsp;{{ item.likes }}</el-text
+                  ><Icon icon="uiw:like-o" class="msg-icon" />&nbsp;{{
+                    item.likes
+                  }}</el-text
                 >
               </el-col>
               <el-col :span="4" class="tabBox">
                 <el-text class="tabIcon"
-                  ><el-icon class="msg-icon"><Share /></el-icon>&nbsp;{{ item.share }}</el-text
+                  ><el-icon class="msg-icon"><Share /></el-icon>&nbsp;{{
+                    item.share
+                  }}</el-text
                 >
               </el-col>
-              <el-col :span="4"> <el-text>{{ item.time }}</el-text> </el-col>
+              <el-col :span="4">
+                <el-text>{{ item.time }}</el-text>
+              </el-col>
             </el-row>
           </el-col>
         </el-row>
@@ -103,7 +116,10 @@ import { onMounted, ref, watch } from "vue";
 import elementResizeListen from "element-resize-detector";
 import { ElMessage } from "element-plus";
 import { getMsgsByTypeService, getMsgsService } from "@/api/msg.js";
+import { getAllMsgTypeService } from "@/api/msgType";
 import { Icon } from "@iconify/vue";
+import UploadMsg from "@/pages/views/UploadMsg.vue";
+
 //左侧菜单容器宽度
 const leftWidth = ref("10%");
 //是否展开类型筛选菜单
@@ -112,39 +128,48 @@ const isCollapse = ref(true);
 const isControl = ref(true);
 //帖子列表数据
 const msgList = ref({});
+// 帖子类型数据
+const msgTypeList = ref([]);
 
 //获取全部帖子
 const getAllMsgs = () => {
-  getMsgsService(1, 10).then((res) => {
-    if (res.code.includes("OK")) {
-      msgList.value = res.data.records;
-    }else{
-      msgList.value = {}
-    }
-  }).catch(()=>{
-    msgList.value = {}
-  })
+  getAllMsgTypeService().then((res) => {
+    msgTypeList.value = res.data;
+  });
+  getMsgsService(1, 10)
+    .then((res) => {
+      if (res.code.includes("OK")) {
+        msgList.value = res.data.records;
+      } else {
+        msgList.value = {};
+      }
+    })
+    .catch(() => {
+      msgList.value = {};
+    });
 };
 //根据类型筛选帖子
 const getAllMsgsByType = (type) => {
-  getMsgsByTypeService(type,1,10).then((res)=>{
-    if (res.code.includes("OK")) {
-      msgList.value = res.data.records;
-    }else{
-      msgList.value = {}
-    }
-  }).catch(()=>{
-    msgList.value = {}
-  })
+  getMsgsByTypeService(type, 1, 10)
+    .then((res) => {
+      if (res.code.includes("OK")) {
+        msgList.value = res.data.records;
+      } else {
+        msgList.value = {};
+      }
+    })
+    .catch(() => {
+      msgList.value = {};
+    });
 };
 //点击左侧菜单变换数据
-const changeMsgList = (i,path,item)=>{
-  if(i == '-1'){
-    getAllMsgs()
-  }else{
-    getAllMsgsByType(i)
+const changeMsgList = (i, path, item) => {
+  if (i == "-1") {
+    getAllMsgs();
+  } else {
+    getAllMsgsByType(i);
   }
-}
+};
 
 //根据浏览器宽高控制左侧菜单宽高
 const changeMenu = (element) => {
@@ -211,12 +236,12 @@ onMounted(() => {
   background-color: #f2e7e5;
 }
 
-.tabIcon{
+.tabIcon {
   display: flex;
   align-items: center;
 }
 
-.msg-icon:hover{
+.msg-icon:hover {
   cursor: pointer;
   color: blue;
 }

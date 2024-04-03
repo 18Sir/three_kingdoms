@@ -41,38 +41,39 @@ public class EventServicesImpl implements EventServices {
     }
 
     public List<Event> eventFormat(List<Event> eventList) {
-        if (eventList.isEmpty()) {
-            for (int i = 0; i < eventList.size(); i++) {
-                //
-                List<Addr> addrList = new ArrayList<>();
-                List<Actor> actorList = new ArrayList<>();
-                Event event = eventList.get(i);
-                if (event.getAddrs() != null) {
-                    String[] selectAddrs = eventList.get(i).getAddrs().split(",");
-                    addrList = addrDao.selectList(new QueryWrapper<Addr>().in("addr_id", selectAddrs));
-                }
-                if (event.getAids() != null) {
-                    String[] selectActors = eventList.get(i).getAids().split(",");
-                    actorList = actorDao.selectList(new QueryWrapper<Actor>().in("aid", selectActors));
-                }
-
-                List<String> addrs = new ArrayList<>();
-                for (int j = 0; j < addrList.size(); j++) {
-                    addrs.add(addrList.get(j).getAddrName());
-                }
-
-                List<String> actors = new ArrayList<>();
-                for (int j = 0; j < actorList.size(); j++) {
-                    actors.add(actorList.get(j).getAFname());
-                }
-                Event e = eventList.get(i);
-                e.setAddrList(addrs);
-                e.setActorList(actors);
-
-                eventList.set(i, e);
+        if (!eventList.isEmpty()) {
+            for (Event event : eventList) {
+                event.setAddrList(getEventAddrList(event.getAddrs()));
+                event.setActorList(getEventActorList(event.getAids()));
             }
         }
         return eventList;
+    }
+
+    public List<Addr> getEventAddrList(String addrs){
+        List<Addr> addrList = new ArrayList<>();
+        if (addrs != null) {
+            String[] selectAddrs = addrs.split(",");
+            addrList = addrDao.selectList(new LambdaQueryWrapper<Addr>().
+                    in(Addr::getAddrId, selectAddrs));
+            for (Addr addr : addrList) {
+                if(addr.getState() == null){
+                    addr.setChildren(addrDao.selectList(new QueryWrapper<Addr>().
+                            eq("state",addr.getAddrName())));
+                }
+            }
+        }
+        return addrList;
+    }
+    public List<Actor> getEventActorList(String aids){
+        List<Actor> actorList = new ArrayList<>();
+        if (aids != null) {
+            String[] selectActors = aids.split(",");
+            actorList = actorDao.selectList(new LambdaQueryWrapper<Actor>().
+                    in(Actor::getAid, selectActors).
+                    select(Actor::getAid,Actor::getAFname,Actor::getATname));
+        }
+        return actorList;
     }
 
     @Override
@@ -88,25 +89,9 @@ public class EventServicesImpl implements EventServices {
     @Override
     public Event findById(Long eid) {
         Event event = eventDao.selectById(eid);
-        List<Addr> addrList = new ArrayList<>();
-        List<Actor> actorList = new ArrayList<>();
-        if (event != null) {
-            String addrStr = event.getAddrs();
-            String[] addrs = addrStr.split(",");
-            for (int i = 0; i < addrs.length; i++) {
-                Addr addr = addrDao.selectById(addrs[i]);
-                addrList.add(addr);
-            }
-            String actorStr = event.getAids();
-            String[] actors = actorStr.split(",");
-            for (int i = 0; i < actors.length; i++) {
-                Actor actor = actorDao.selectById(actors[i]);
-                actor.setStory("考虑性能，此接口不展示人物传记内容");
-                actorList.add(actor);
-            }
-            event.setAddrList(addrList);
-            event.setActorList(actorList);
-        }
+        List<Event> eventList = new ArrayList<>();
+        eventList.add(event);
+        event = eventFormat(eventList).get(0);
 
         return event;
     }

@@ -1,27 +1,27 @@
 
-J
-java:S3740"/Provide the parametrized type for this generic.(à¯ËĞøÿÿÿÿ
-E
-java:S3740""/Provide the parametrized type for this generic.(äÈ×™
-E
-java:S3740""/Provide the parametrized type for this generic.(äÈ×™
-J
-java:S37400"/Provide the parametrized type for this generic.(Şü¢şÿÿÿÿ
-J
-java:S37400"/Provide the parametrized type for this generic.(Şü¢şÿÿÿÿ
-J
-java:S3740V"/Provide the parametrized type for this generic.(à¯ËĞøÿÿÿÿ
-o
-java:S2293,"YReplace the type specification in this constructor call with the diamond operator ("<>").(À×Î¿
-o
-java:S1488k"YImmediately return this expression instead of assigning it to the temporary variable "i".(ó¤®
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ
-T
-java:S18540"9Remove this useless assignment to local variable "iPage".(Şü¢şÿÿÿÿ
-E
-java:S14810"*Remove this unused "iPage" local variable.(Şü¢şÿÿÿÿ
+w
+java:S3740#"/Provide the parametrized type for this generic.(à¯ËĞøÿÿÿÿ8ò¥Ïè1J$e082e8af-bdb0-4623-98bd-c19b8c34dfa2
+r
+java:S3740&"/Provide the parametrized type for this generic.(äÈ×™8ò¥Ïè1J$28584bed-6e44-4108-909b-695bcb0dd5da
+r
+java:S3740&"/Provide the parametrized type for this generic.(äÈ×™8ò¥Ïè1J$57f20ecc-7398-401d-8613-560b367620a4
+w
+java:S37409"/Provide the parametrized type for this generic.(Şü¢şÿÿÿÿ8ò¥Ïè1J$8e567cbd-7eb9-4c83-b3f2-2c01b609e0e4
+w
+java:S37409"/Provide the parametrized type for this generic.(Şü¢şÿÿÿÿ8ò¥Ïè1J$678cea5c-ffbf-4598-87d8-ba8ef8828b1a
+w
+java:S3740a"/Provide the parametrized type for this generic.(à¯ËĞøÿÿÿÿ8ò¥Ïè1J$d9ea1b85-e6cf-4d3a-8067-9afeeeb43df7
+œ
+java:S22935"YReplace the type specification in this constructor call with the diamond operator ("<>").(À×Î¿8ò¥Ïè1J$cfc25755-ce95-4512-8faa-1763289ce865
+œ
+java:S1488v"YImmediately return this expression instead of assigning it to the temporary variable "i".(ó¤®8‘ò¥Ïè1J$de932812-b776-4686-8617-fd96397d5083
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8œò¥Ïè1J$d214853e-28d5-4d75-a440-fe0113caf3f4
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8œò¥Ïè1J$4e116405-3fc0-4192-8254-0c029d0ebfad
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8œò¥Ïè1J$5ff7b99a-3f38-472d-b259-a61deea471b6
+
+java:S18549"9Remove this useless assignment to local variable "iPage".(Şü¢şÿÿÿÿ8¡ò¥Ïè1J$6933f872-fcaa-476e-b5fc-04533501ea68
+r
+java:S14819"*Remove this unused "iPage" local variable.(Şü¢şÿÿÿÿ8£ò¥Ïè1J$3c3cbced-2fe7-4048-aabb-af80500d9f93

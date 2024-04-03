@@ -2,23 +2,24 @@ package com.three_kingdoms.controller;
 
 import cn.hutool.crypto.SecureUtil;
 import com.three_kingdoms.domain.User;
-import com.three_kingdoms.exception.SystemException;
-import com.three_kingdoms.services.impl.UserServicesImpl;
+import com.three_kingdoms.services.UserServices;
 import com.three_kingdoms.util.JWTUtil;
 import com.three_kingdoms.util.Verify;
 import jakarta.annotation.Resource;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/users")
@@ -26,16 +27,11 @@ import java.util.UUID;
 public class UserController {
 
     @Resource
-    private UserServicesImpl userServices;
+    private UserServices userServices;
     @Resource
     private Verify verify;
-
-    UserController() {
-
-    }
-
-    @Value("${web.imageUrl}")
-    private String imageUrl;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @GetMapping
     public Result<User> getById(@RequestHeader(name = "Authorization") String token) {
@@ -47,6 +43,11 @@ public class UserController {
             return Result.error(ResultCode.SELECT_ERR, "该用户不存在");
         }
 
+    }
+
+    @GetMapping("/{uid}")
+    public Result<User> getAnotherById(@PathVariable Long uid) {
+        return Result.selectSuccess(userServices.findById(uid));
     }
 
     //获取全部用户（仅管理员可用）
@@ -80,28 +81,13 @@ public class UserController {
     }
 
     @PutMapping
-    public Result<User> updateById(@RequestHeader(name = "Authorization") String token, @RequestBody User user) {
-        Long uid = JWTUtil.getTokenUid(token);
-        if (userServices.findById(uid) != null) {
-            if (userServices.findByName(user.getUname()) == null) {
-                int res = userServices.update(user);
-                if (res > 0) {
-                    return Result.updateSuccess();
-                } else {
-                    return Result.updateError();
-                }
-            } else {
-                return Result.error(ResultCode.UPDATE_ERR, "修改的用户名已存在！");
-            }
-
-        } else {
-            return Result.error(ResultCode.UPDATE_ERR, "用户不存在");
-        }
+    public Result<User> updateById(@RequestHeader(name = "Authorization") String token, @NotNull @RequestBody User user) {
+        return userServices.update(token, user);
     }
 
     //注销其他用户（仅管理员）
     @DeleteMapping("/{uid}")
-    public Result<User> deleteById(@RequestHeader(name = "Authorization") String token, @PathVariable Long uid) {
+    public Result<User> deleteById(@RequestHeader(name = "Authorization") String token, @NotBlank @PathVariable Long uid) {
         //判断是否是管理员用户
         if (verify.isAdmin(token)) {
             int res = userServices.delete(uid);
@@ -112,6 +98,7 @@ public class UserController {
         } else {
             return Result.error(ResultCode.DELETE_ERR, "没有权限操作");
         }
+
     }
 
     //注销自己
@@ -140,6 +127,8 @@ public class UserController {
                 claims.put("uid", loginUser.getUid());
                 claims.put("uname", uname);
                 String token = JWTUtil.genToken(claims);
+                String key = "three-kingdoms:" + loginUser.getUid() + ":token";
+                redisTemplate.opsForValue().set(key, token, 7, TimeUnit.DAYS);
                 return Result.success(ResultCode.Login_OK, "登录成功", token);
             } else {
                 return Result.error(ResultCode.Login_ERR, "用户名或密码错误");
@@ -150,30 +139,48 @@ public class UserController {
     }
 
     //上传头像接口
+
+    @CrossOrigin
     @PostMapping("/upload")
-    public Result<String> uploadAvatar(@RequestHeader(name = "Authorization") String token, MultipartFile file) {
-        String fileName = "";
-        String name = file.getOriginalFilename();
-        if (name != null) {
-            //保证文件名字是唯一的，防止文件覆盖
-            fileName = UUID.randomUUID().toString() + name.substring(name.lastIndexOf("."));
-        } else {
-            return Result.error(ResultCode.SAVE_ERR, "头像上传失败");
-        }
-        StringBuilder path = new StringBuilder("D:\\毕设\\avatarImages\\");
-        path.append(fileName);
-        //存储到本地磁盘
-        try {
-            file.transferTo(new File(path.toString()));
-            User user = new User();
-            user.setUid(JWTUtil.getTokenUid(token));
-            user.setAvatar(imageUrl + fileName);
-            userServices.update(user);
-            return Result.success(ResultCode.SAVE_OK, "上传成功", user.getAvatar());
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new SystemException(ResultCode.SAVE_ERR, "上传失败");
-        }
+    public Result<String> uploadAvatar(@RequestHeader(name = "Authorization") String token, @NotNull MultipartFile file) {
+        return userServices.updateAvatar(token, file);
     }
+
+    //发送邮件接口
+    @PostMapping("/email/send")
+    public Result<String> sendEmailCode(@RequestHeader(name = "Authorization") String token,
+                                        @Email String email) {
+        return userServices.sendEmailCode(token, email);
+    }
+
+    //验证邮件接口
+    @GetMapping("/email/verify")
+    public Result<Boolean> verifyEmailCode(@RequestHeader(name = "Authorization") String token,
+                                           @RequestParam String code) {
+        return userServices.verifyEmailCode(token, code);
+    }
+
+    //验证邮箱验证码，成功后更新邮箱
+    @GetMapping("/email/vwu")
+    public Result<Boolean> verifyEmailCodeWithUpdate(@RequestHeader(name = "Authorization") String token,
+                                                    @RequestParam String code,
+                                                    @Email @RequestParam String email){
+        return userServices.verifyEmailCodeWithUpdate(token, code, email);
+    }
+
+    //修改密码
+    @PostMapping("/password")
+    public Result<String> bindEmail(@RequestHeader(name = "Authorization") String token,
+                                    String password) {
+        return userServices.updatePassword(token, password);
+    }
+
+    //验证密码
+    @PostMapping("/password/verify")
+    public Result<String> verifyPassword(@RequestHeader(name = "Authorization") String token,
+                                         String password) {
+        return userServices.verifyPassword(token, password);
+    }
+
 
 }
