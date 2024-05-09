@@ -10,17 +10,17 @@
 
 l 势力分布页根据事件动态展示某个时期的势力分布图；
 
-<img src=".\README.assets\image-20240509215740209.png" alt="image-20240509215740209" style="zoom: 25%;" /><img src=".\README.assets\image-20240509215651258.png" alt="image-20240509215651258" style="zoom: 25%;" />
+<img src=".\README.assets\image-20240509215740209-1715271347531.png" alt="image-20240509215740209" style="zoom: 25%;" /><img src=".\README.assets\image-20240509215651258.png" alt="image-20240509215651258" style="zoom: 25%;" />
 
 
 
 管理员对势力信息的操作
 
-<img src=".\README.assets\image-20240509221844393.png" alt="image-20240509221844393" style="zoom:25%;" /><img src=".\README.assets\image-20240509222134717.png" alt="image-20240509222134717" style="zoom:25%;" />
+<img src=".\README.assets\image-20240509221844393-1715271351609.png" alt="image-20240509221844393" style="zoom:25%;" /><img src=".\README.assets\image-20240509222134717.png" alt="image-20240509222134717" style="zoom:25%;" />
 
-添加一条势力<img src=".\README.assets\image-20240509222324130.png" alt="image-20240509222324130" style="zoom:25%;" /><img src=".\README.assets\image-20240509222423754.png" alt="image-20240509222423754" style="zoom:25%;" />
+添加一条势力<img src=".\README.assets\image-20240509222324130-1715271356053.png" alt="image-20240509222324130" style="zoom:25%;" /><img src=".\README.assets\image-20240509222423754.png" alt="image-20240509222423754" style="zoom:25%;" />
 
-<img src=".\README.assets\image-20240509222619455.png" alt="image-20240509222619455" style="zoom:25%;" />
+<img src=".\README.assets\image-20240509222619455-1715271360682.png" alt="image-20240509222619455" style="zoom:25%;" />
 
 
 
@@ -28,7 +28,7 @@ l 势力分布页根据事件动态展示某个时期的势力分布图；
 
 l 展示历史人物传记和事件，点击人物传记或事件的地点动态显示地点在地图的位置；
 
-<img src=".\README.assets\image-20240509215850374.png" alt="image-20240509215850374" style="zoom:33%;" />
+<img src=".\README.assets\image-20240509215850374-1715271363020.png" alt="image-20240509215850374" style="zoom:33%;" />
 
 管理员对人物、事件、地点的操作与势力信息相似，不再赘述。
 
@@ -36,9 +36,9 @@ l 展示历史人物传记和事件，点击人物传记或事件的地点动态
 
 搜索框可以按人物或事件进行搜索，有自动补全，在人物页默认搜人物，事件页默认搜事件，其他页默认搜综合。
 
-![image-20240509230550493](.\README.assets\image-20240509230550493.png)
+<img src=".\README.assets\image-20240509230550493-1715271325110-1715271752906-1715271764380.png" alt="image-20240509220056171" style="zoom: 50%;" />
 
-<img src=".\README.assets\image-20240509220012746.png" alt="image-20240509220012746" style="zoom:50%;" /><img src=".\README.assets\image-20240509220056171.png" alt="image-20240509220056171" style="zoom: 50%;" />
+<img src=".\README.assets\image-20240509220012746-1715271323223.png" alt="image-20240509220012746" style="zoom:50%;" /><img src=".\README.assets\image-20240509220056171.png" alt="image-20240509220056171" style="zoom: 50%;" />
 
 
 
@@ -50,11 +50,13 @@ l 展示历史人物传记和事件，点击人物传记或事件的地点动态
 
 可以根据热度与时间排序。
 
-<img src=".\README.assets\image-20240509220444672.png" alt="image-20240509220444672" style="zoom:25%;" /><img src=".\README.assets\image-20240509220505841.png" alt="image-20240509220505841" style="zoom:25%;" />![image-20240509220550852](.\README.assets\image-20240509220550852.png)
+<img src=".\README.assets\image-20240509220444672-1715271331234.png" alt="image-20240509220444672" style="zoom:25%;" /><img src=".\README.assets\image-20240509220505841.png" alt="image-20240509220505841" style="zoom:25%;" />
+
+<img src=".\README.assets\image-20240509220550852.png" alt="image-20240509220444672" style="zoom:25%;" />
 
 可以根据类型筛选。数据是懒加载的，滑动到底后会加载新内容。
 
-<img src=".\README.assets\image-20240509220550852.png" alt="image-20240509220550852" style="zoom:25%;" /><img src=".\README.assets\image-20240509220613065.png" alt="image-20240509220613065" style="zoom:25%;" />
+<img src=".\README.assets\image-20240509220550852.png" alt="image-20240509220550852" style="zoom:25%;" /><img src=".\README.assets\image-20240509220613065-1715271339108.png" alt="image-20240509220613065" style="zoom:25%;" />
 
 ### 发帖
 
@@ -62,21 +64,21 @@ l 用户发帖后，会先进入隐藏状态，仅用户自己可见，待管理
 
 #### 用户方面
 
-<img src=".\README.assets\image-20240509221210535.png" alt="image-20240509221210535" style="zoom: 25%;" /><img src=".\README.assets\image-20240509221245300.png" alt="image-20240509221245300" style="zoom:33%;" />
+<img src=".\README.assets\image-20240509221210535-1715271381418.png" alt="image-20240509221210535" style="zoom: 25%;" /><img src=".\README.assets\image-20240509221245300.png" alt="image-20240509221245300" style="zoom:33%;" />
 
 用户在个人中心查看帖子状态
 
-<img src=".\README.assets\image-20240509221331759.png" alt="image-20240509221331759" style="zoom:25%;" />
+<img src=".\README.assets\image-20240509221331759-1715271384162.png" alt="image-20240509221331759" style="zoom:25%;" />
 
 #### 管理员方面
 
 管理员在后台查看帖子状态
 
-<img src=".\README.assets\image-20240509221613206.png" alt="image-20240509221613206" style="zoom:25%;" />
+<img src=".\README.assets\image-20240509221613206-1715271386063.png" alt="image-20240509221613206" style="zoom:25%;" />
 
 可根据状态筛选
 
-<img src=".\README.assets\image-20240509221720144.png" alt="image-20240509221720144" style="zoom:25%;" />
+<img src=".\README.assets\image-20240509221720144-1715271388289.png" alt="image-20240509221720144" style="zoom:25%;" />
 
 给予通过
 
@@ -160,7 +162,7 @@ l 对于用户的帖子或者评论可以举报，举报后由管理员进入后
 
 #### 用户方
 
-发送后，用户接收![image-20240509225258093](.\README.assets\image-20240509225258093.png)<img src=".\README.assets\image-20240509225328139.png" alt="image-20240509225328139" style="zoom:25%;" />
+发送后，用户接收<img src=".\README.assets\image-20240509225258093-1715271308014.png" alt="image-20240509225328139" style="zoom: 50%;" /><img src=".\README.assets\image-20240509225328139.png" alt="image-20240509225328139" style="zoom:25%;" />
 
 ### 封禁用户
 
