@@ -1,6 +1,4 @@
 <template>
-  <!-- <div class="common-layout">
-    <el-container> -->
   <el-header><HeaderVue /></el-header>
   <el-main><MapVue /></el-main>
   <div class="card">
@@ -25,14 +23,12 @@
     </div>
   </div>
 
-  <!-- </el-container>
-  </div> -->
 </template>
 
 <script setup>
 import { provide, ref } from "vue";
-import HeaderVue from "./views/Header.vue";
-import MapVue from "./views/Map.vue";
+import HeaderVue from "@/views/header/Header.vue";
+import MapVue from "@/views/base/Map.vue";
 import Dock from "primevue/dock";
 
 import bingzhou from "../assets/images/bingzhou.png";
@@ -183,7 +179,6 @@ const onDockItemClick = (event, item) => {
 .el-header {
   width: 100%;
   height: 8vh;
-  /* padding: 0px; */
 }
 .el-main {
   width: 100%;
@@ -193,11 +188,9 @@ const onDockItemClick = (event, item) => {
 .dock-window {
   width: 100%;
   height: 80px;
-  /* padding: 25px; */
   position: fixed;
   bottom: 10px;
   z-index: 10;
-  /* background-color: #cdd1d3; */
 }
 .p-dock .p-dock-list-container{
   padding: 0.5rem;
@@ -213,19 +206,11 @@ const onDockItemClick = (event, item) => {
   padding: 0.5rem;
 }
 
-.p-tooltip.p-tooltip-top{
+.p-tooltip .p-tooltip-top{
   padding: 0.25rem 0;
 }
 
 .p-tooltip .p-tooltip-text{
   padding: 0.5rem 0.75rem;
 }
-/* .p-tooltip{
-  display: none;
-  padding: 0.25rem 0.5rem !important;
-}
-.p-tooltip .p-tooltip-arrow{
-  height: 4rem;
-  padding: 3rem;
-} */
 </style>

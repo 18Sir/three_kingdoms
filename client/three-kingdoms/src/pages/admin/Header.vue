@@ -44,7 +44,7 @@
 import { getUsersServices } from "@/api/user";
 import router from "@/router";
 import stores from "@/stores";
-import { onMounted, onUpdated, reactive, ref } from "vue";
+import { onMounted, ref } from "vue";
 
 const activeIndex = ref('0');
 const handleSelect = () => {};
@@ -60,6 +60,7 @@ const getUserData = () => {
         userData.value.avatar = res.data.avatar
           ? res.data.avatar
           : "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png";
+          stores.commit("setUserData",res.data);
       } else {
         userData.value = null;
       }
@@ -85,7 +86,7 @@ const exitLogin = () => {
 };
 </script>
 
-<style>
+<style scoped>
 .flex-grow {
   flex-grow: 1;
 }

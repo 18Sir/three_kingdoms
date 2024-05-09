@@ -1,13 +1,13 @@
 package com.three_kingdoms.controller;
 
 import cn.hutool.crypto.SecureUtil;
+import com.three_kingdoms.domain.MessageType;
 import com.three_kingdoms.domain.User;
 import com.three_kingdoms.services.UserServices;
 import com.three_kingdoms.util.JWTUtil;
 import com.three_kingdoms.util.Verify;
 import jakarta.annotation.Resource;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +37,7 @@ public class UserController {
     public Result<User> getById(@RequestHeader(name = "Authorization") String token) {
         Long uid = JWTUtil.getTokenUid(token);
         User user = userServices.findById(uid);
+        user.setNewNum(userServices.hasNewMessage(token).getData());
         if (user != null) {
             return Result.selectSuccess(user);
         } else {
@@ -87,7 +88,7 @@ public class UserController {
 
     //注销其他用户（仅管理员）
     @DeleteMapping("/{uid}")
-    public Result<User> deleteById(@RequestHeader(name = "Authorization") String token, @NotBlank @PathVariable Long uid) {
+    public Result<User> deleteById(@RequestHeader(name = "Authorization") String token, @PathVariable Long uid) {
         //判断是否是管理员用户
         if (verify.isAdmin(token)) {
             int res = userServices.delete(uid);
@@ -127,7 +128,7 @@ public class UserController {
                 claims.put("uid", loginUser.getUid());
                 claims.put("uname", uname);
                 String token = JWTUtil.genToken(claims);
-                String key = "three-kingdoms:" + loginUser.getUid() + ":token";
+                String key = "three-kingdoms:user:" + loginUser.getUid() + ":token";
                 redisTemplate.opsForValue().set(key, token, 7, TimeUnit.DAYS);
                 return Result.success(ResultCode.Login_OK, "登录成功", token);
             } else {
@@ -182,5 +183,50 @@ public class UserController {
         return userServices.verifyPassword(token, password);
     }
 
+    @PostMapping("/block")
+    public Result<String> blockUser(@RequestHeader(name = "Authorization") String token,
+                                    @RequestParam Long blockUid,
+                                    @RequestParam Long time,
+                                    @RequestParam String reason){
+        return userServices.blockUser(token, blockUid, time, reason);
+    }
+
+    @DeleteMapping("/block/{blockUid}")
+    public Result<String> unBlockUser(@RequestHeader(name = "Authorization") String token,
+                                      @PathVariable Long blockUid){
+        return userServices.unBlockUser(token, blockUid);
+    }
+
+    @GetMapping("/block")
+    public Result<Long> blockUserTTC(@RequestHeader(name = "Authorization") String token){
+        return userServices.blockUserTTC(token);
+    }
+
+    //向用户发送信息
+    @PostMapping("/message/send")
+    Result<String> sendUserMessage(@RequestParam Long uid,
+                                   @RequestParam String title,
+                                   @RequestParam String content,
+                                   @RequestParam MessageType type){
+        return userServices.sendUserMessage(uid, title, content, type);
+    }
+    //用户删除信息
+    @DeleteMapping("/message")
+    Result<String> userDelMessage(@RequestHeader(name = "Authorization") String token,
+                                  @RequestParam String hashKey,
+                                  @RequestParam MessageType type){
+        return userServices.userDelMessage(token, hashKey, type);
+    }
+    //新消息提示
+    @GetMapping("/message/alert")
+    Result<Integer> hasNewMessage(@RequestHeader(name = "Authorization") String token){
+        return userServices.hasNewMessage(token);
+    }
+    //用户访问自己的消息
+    @GetMapping("/message/{type}")
+    Result<Map<String, Object>> userGetMessage(@RequestHeader(name = "Authorization") String token,
+                                               @PathVariable MessageType type){
+        return userServices.userGetMessage(token,type);
+    }
 
 }

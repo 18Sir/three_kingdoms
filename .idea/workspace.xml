@@ -5,69 +5,119 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ec6d0ec-478c-443f-b77c-8f7858744f7b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/config/RedisConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/MsgTypeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/dao/MsgTypeDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/MsgType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/MsgTypeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/MsgTypeServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/util/EmailCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/JuBaoCommentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/JuBaoMsgController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/dao/JuBaoCommentDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/dao/JuBaoMsgDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/JuBaoComment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/JuBaoMsg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/MessageType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/JuBaoCommentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/JuBaoMsgService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/JuBaoCommentServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/JuBaoMsgServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/util/MapSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/util/SendMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/1/011e6f0c7bf057a40ef2871ff52550d3b4772770" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/1/011e6f0c7bf057a40ef2871ff52550d3b4772770" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0a0efc52f829297430988261896dc239e2e22dea" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0a0efc52f829297430988261896dc239e2e22dea" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0e6b82a0cf36fc6477a2bff4bfccc4111107b30c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0e6b82a0cf36fc6477a2bff4bfccc4111107b30c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/1/51ee4d384595e236b16a1d4e305c9ffab738b01a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/1/51ee4d384595e236b16a1d4e305c9ffab738b01a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/8/88d0430231ec87b25879bcd22d45ec1eff3f08ee" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/8/88d0430231ec87b25879bcd22d45ec1eff3f08ee" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/0/50a1d863aa2e60867951a0a1dc59bb15dbf83b96" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/0/50a1d863aa2e60867951a0a1dc59bb15dbf83b96" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/5/75eacea91bc6e48ef156d069c41f05adcf98c30a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/5/75eacea91bc6e48ef156d069c41f05adcf98c30a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/d/7dd718562fabc05156a05ca7b1830878d3a90d0e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/d/7dd718562fabc05156a05ca7b1830878d3a90d0e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/2/a2c3e70cf59cbda34542440c5dfb1a346e97f0cd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/2/a2c3e70cf59cbda34542440c5dfb1a346e97f0cd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/1/b196a75c174f2ebdf8cc415c60e0aba8741c1939" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/1/b196a75c174f2ebdf8cc415c60e0aba8741c1939" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/ba5758f03dd8d3a2164eebf54e91fb31315cf517" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/ba5758f03dd8d3a2164eebf54e91fb31315cf517" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/2/c2607144cdc75e802f2ffe8bc3a6715645fbcd61" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/2/c2607144cdc75e802f2ffe8bc3a6715645fbcd61" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/f/cf126410cd7a4809a49f3055b461603a682a1bc4" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/f/cf126410cd7a4809a49f3055b461603a682a1bc4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/0/d091960ce1e5dbb5ee06749009283af005dbd2eb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/0/d091960ce1e5dbb5ee06749009283af005dbd2eb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/3/e327733c3c3153f69afd63ddab91ee3e786136bb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/3/e327733c3c3153f69afd63ddab91ee3e786136bb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/three-kingdoms/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/api/addr.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/api/addr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/api/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/api/comment.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/api/msg.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/api/msg.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/api/power.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/api/power.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/api/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/api/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/assets/dataTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/assets/dataTable.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/DiscussInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/pages/DiscussInfo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/DiscussMore.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/pages/DiscussMore.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/EventInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/pages/EventInfo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/User.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/pages/User.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/admin/ActorTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/pages/admin/ActorTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/json/map/bingzhou.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/json/map/bingzhou.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/json/map/powerMap.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/json/map/powerMap.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/json/map/three_kingdoms.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/json/map/three_kingdoms.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/Actor.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/ActorInfo.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/ActorMore.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/Discuss.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/DiscussInfo.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/DiscussMore.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/Event.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/EventInfo.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/EventMore.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/pages/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/Main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/pages/Main.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/Power.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/PowerMap.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/User.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/admin/EventTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/pages/admin/EventTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/admin/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/pages/admin/Header.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/admin/LeftMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/pages/admin/LeftMenu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/Page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/Page.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/header/UserInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/header/UserInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/admin/MsgListTable.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/admin/MsgTypeTable.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/admin/PowerTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/pages/admin/PowerTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/admin/UserTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/pages/admin/UserTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/Comment.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/CommentInfo.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/EditComment.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/Header.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/Map.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/Page.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/Share.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/UpdateEmail.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/UpdatePassword.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/UploadMsg.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/UserFace.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/UserSecure.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/UserSetting.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/header/Search.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/header/Title.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/pages/views/header/UserInfo.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/shims-vue.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/shims-vue.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/stores/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/stores/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/three-kingdoms/src/util/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/three-kingdoms/src/util/request.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/ActorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/ActorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log.2024-03-26.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log.2024-03-27.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log.2024-03-28.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log.2024-03-29.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log.2024-03-30.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log.2024-03-31.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring.log.2024-04-01.0.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/AddrController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/AddrController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/EventController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/MsgController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/MsgController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/PowerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/PowerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/ProjectExceptionAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/ProjectExceptionAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/Result.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/Actor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/dao/UserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/Addr.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/Addr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/Msg.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/Msg.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/Power.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/Power.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/domain/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/interceptors/LoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/interceptors/LoginInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/ActorServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/ActorServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/AddrServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/AddrServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/EventServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/EventServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/CommentServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/CommentServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/MsgServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/MsgServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/PowerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/PowerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/UserServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/UserServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/ActorServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/ActorServicesImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/AddrServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/AddrServicesImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/CommentServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/CommentServicesImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/EventServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/EventServicesImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/MsgServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/MsgServicesImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/PowerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/PowerServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/UserServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/services/impl/UserServicesImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/util/EmailCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/util/EmailCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/util/Verify.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/three_kingdoms/util/Verify.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,9 +132,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue Single File Component" />
-        <option value="Enum" />
         <option value="new-camunda-diagram" />
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -177,6 +227,8 @@
       <recent name="com.three_kingdoms" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.three_kingdoms.controller" />
+      <recent name="com.three_kingdoms.domain" />
       <recent name="com.three_kingdoms.exception" />
     </key>
   </component>
@@ -370,6 +422,21 @@
       <workItem from="1711851957898" duration="7859000" />
       <workItem from="1711946232858" duration="14022000" />
       <workItem from="1712019557350" duration="19090000" />
+      <workItem from="1712105485859" duration="17445000" />
+      <workItem from="1712402672720" duration="7350000" />
+      <workItem from="1712541178265" duration="1327000" />
+      <workItem from="1713421729405" duration="3571000" />
+      <workItem from="1714446667330" duration="9171000" />
+      <workItem from="1714524945823" duration="11172000" />
+      <workItem from="1714613738638" duration="1175000" />
+      <workItem from="1714624406742" duration="7622000" />
+      <workItem from="1714711422362" duration="5133000" />
+      <workItem from="1714787819203" duration="21749000" />
+      <workItem from="1714870910439" duration="28395000" />
+      <workItem from="1714957834292" duration="23626000" />
+      <workItem from="1715045322913" duration="14730000" />
+      <workItem from="1715160631503" duration="4267000" />
+      <workItem from="1715261195534" duration="1391000" />
     </task>
     <servers />
   </component>

@@ -16,58 +16,53 @@ public class PowerController {
     private PowerService powerService;
 
     @GetMapping("")
-    public Result getPowerList(){
-        List<Power> powers = powerService.findPowerAll();
-        if(powers.size() > 0){
-            return Result.selectSuccess(powers);
-        }else{
-            return Result.selectError();
-        }
+    public Result getPowerList() {
+        return Result.selectSuccess(powerService.findPowerAll());
     }
 
     @GetMapping("/{pid}")
-    public Result getPowerById(@PathVariable Long pid){
+    public Result getPowerById(@PathVariable Long pid) {
         Power power = powerService.findPowerById(pid);
-        if(power != null){
+        if (power != null) {
             return Result.selectSuccess(power);
-        }else{
+        } else {
             return Result.selectError();
         }
     }
 
     @DeleteMapping("/{pid}")
-    public Result delPower(@PathVariable Long pid){
+    public Result delPower(@PathVariable Long pid) {
         Integer i = powerService.delPower(pid);
-        if(i > 0){
+        if (i > 0) {
             return Result.deleteSuccess();
-        }else{
+        } else {
             return Result.deleteError();
         }
     }
 
     @DeleteMapping("/more")
-    public Result<Integer> delPowerMore(@RequestBody List<Long> pids){
+    public Result<Integer> delPowerMore(@RequestBody List<Long> pids) {
         return powerService.delPowerMore(pids);
     }
 
 
     @PostMapping("")
-    public Result savePower(@RequestBody Power power){
-        log.info("传入的power参数："+power.toString());
+    public Result savePower(@RequestBody Power power) {
+        log.info("传入的power参数：" + power.toString());
         Integer i = powerService.savePower(power);
-        if(i > 0){
+        if (i > 0) {
             return Result.saveSuccess("势力添加成功");
-        }else{
+        } else {
             return Result.saveError("势力添加失败");
         }
     }
 
     @PutMapping("")
-    public Result updatePower(@RequestBody Power power){
+    public Result updatePower(@RequestBody Power power) {
         Integer i = powerService.updatePower(power);
-        if(i > 0){
+        if (i > 0) {
             return Result.updateSuccess("势力修改成功");
-        }else{
+        } else {
             return Result.updateError("势力修改失败");
         }
     }

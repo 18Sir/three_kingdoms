@@ -16,6 +16,11 @@ export const getAddrByIdService = (addrId)=>{
     return request.get(`/addrs/${addrId}`)
 }
 
+//根据名称获取地点
+export const getAddrByNameService = (name)=>{
+    return request.get(`/addrs/name/${name}`)
+}
+
 // 获取州的所有郡
 export const getAllAddrCountryService = (stateName) => {
     return request.get(`/addrs/country?stateName=${stateName}`)

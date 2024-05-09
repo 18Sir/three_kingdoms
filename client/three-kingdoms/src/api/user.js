@@ -85,3 +85,54 @@ export const delUserService = () => {
 export const delAnotherUserService = (uid) => {
     return request.delete(`/users/${uid}`)
 }
+
+//封禁用户
+export const blockUserService = (params)=>{
+    return request.post("/users/block",null,{
+        params:{
+            blockUid:params.uid,
+            time:params.time,
+            reason:params.reason
+        }
+    });
+}
+
+//解封用户
+export const unBlockUserService = (blockUid)=>{
+    return request.delete(`/users/block/${blockUid}`)
+}
+
+//查看解封时间
+export const getUserBlockService = ()=>{
+    return request.get("/users/block")
+}
+
+//向用户发送消息
+export const sendUserMessageService = (params)=>{
+    return request.post("/users/message/send",null,{
+        params:{
+            uid:params.uid,
+            title:params.title,
+            content:params.content,
+            type:params.type
+        }
+    })
+}
+
+//用户删除信息
+export const userDelMessageService = (params)=>{
+    return request.delete("/users/message",{
+        params:params.hashKey,
+        type:params.type
+    })
+}
+
+//新消息提示
+export const hasNewMessageService = ()=>{
+    return request.get("/users/message/alert")
+}
+
+//用户访问自己的消息
+export const getUserMessageService = (type)=>{
+    return request.get(`/users/message/${type}`)
+}

@@ -18,4 +18,7 @@ public interface PowerService {
     public Integer delPower(Long pid);
     //删除多个
     public Result<Integer> delPowerMore(List<Long> pids);
+
+    //以下为redis形式
+
 }

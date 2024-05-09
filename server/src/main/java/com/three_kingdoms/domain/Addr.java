@@ -23,6 +23,8 @@ public class Addr {
     private String state;
     //所属郡
     private String country;
+    //地点详情描述
+    private String detail;
     //涉及事件
     private String eids;
     //事件信息

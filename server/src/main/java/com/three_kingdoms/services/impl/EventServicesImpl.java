@@ -57,6 +57,7 @@ public class EventServicesImpl implements EventServices {
             addrList = addrDao.selectList(new LambdaQueryWrapper<Addr>().
                     in(Addr::getAddrId, selectAddrs));
             for (Addr addr : addrList) {
+                //如果郡级为空，表示为州级地点，将郡级作为州的子级返回
                 if(addr.getState() == null){
                     addr.setChildren(addrDao.selectList(new QueryWrapper<Addr>().
                             eq("state",addr.getAddrName())));

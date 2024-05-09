@@ -47,6 +47,12 @@ public class AddrController {
         }
     }
 
+    //根据名称查询地点详细信息
+    @GetMapping("/name/{name}")
+    public Result<Addr> findByName(@PathVariable String name){
+        return addrServices.findByName(name);
+    }
+
     //根据州查询所有郡
     @GetMapping("/country")
     public Result<List<Addr>> findCountryByState(@RequestParam String stateName){

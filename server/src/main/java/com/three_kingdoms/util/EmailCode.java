@@ -29,7 +29,7 @@ public class EmailCode {
     private String nickname;
 
     public void sendCode(User user, String email) {
-        String key = "three-kingdoms:"+user.getUid()+":emailCode";
+        String key = "three-kingdoms:user:"+user.getUid()+":emailCode";
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(nickname + '<' + sender + '>');
@@ -47,7 +47,7 @@ public class EmailCode {
     }
 
     public String getCode(User user){
-        String key = "three-kingdoms:"+user.getUid()+":emailCode";
+        String key = "three-kingdoms:user:"+user.getUid()+":emailCode";
         Object o = redisTemplate.opsForValue().get(key);
         if(o == null){
             return "";

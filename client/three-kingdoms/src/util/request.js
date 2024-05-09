@@ -14,20 +14,9 @@ const instance = axios.create({
 })
 
 //添加响应拦截器
-// instance.interceptors.response.use(
-//     result=>{
-//         return result.data
-//     },
-//     err=>{
-//         // ElMessage.error(result.data.msg ? result.data.msg:'服务异常')
-//         ElMessage.error('服务异常')
-//         //异步的状态转换成失败的状态
-//         return Promise.reject(err);
-//     }
-// )
-
 instance.interceptors.response.use((res) => {
     return new Promise((resolve,reject)=>{
+        
         resolve(res.data)
     })
 }, err => {
@@ -47,23 +36,7 @@ instance.interceptors.response.use((res) => {
     return Promise.reject(err)
 })
 
-// 添加请求拦截器
-// instance.interceptors.request.use(
-//     (config)=>{
-//         //请求前的回调
-//         //添加token
-//         const token = stores.state.token;
-//         if(token){
-//             config.headers.Authorization = token;
-//         }
-//         return config;
-//     },
-//     (err)=>{
-//         //请求错误的回调
-//         return Promise.reject(err)
-//     }
-// )
-
+//添加请求拦截器
 instance.interceptors.request.use((config) => {
     //请求前的回调
         // 添加token

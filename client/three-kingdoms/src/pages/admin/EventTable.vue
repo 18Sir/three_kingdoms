@@ -413,13 +413,10 @@ import DataTable from "primevue/datatable";
 import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
 import Toolbar from "primevue/toolbar";
-import FileUpload from "primevue/fileupload";
 import Dialog from "primevue/dialog";
 import Textarea from "primevue/textarea";
-// import { useToast } from "primevue/usetoast";
 import { ref, onMounted } from "vue";
 import { FilterMatchMode } from "primevue/api";
-import { Delete, Edit } from "@element-plus/icons-vue";
 import "@/assets/dataTable.css";
 import { ElMessage } from "element-plus";
 import { getAllActorNoPageService } from "@/api/actor";
@@ -488,7 +485,6 @@ const addrProps = {
   checkStrictly: true,
 };
 
-// const toast = useToast();
 const dt = ref();
 const dialog = ref(false);
 const deleteDataDialog = ref(false);

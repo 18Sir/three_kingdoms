@@ -21,7 +21,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         try {
             Map<String,Object> claims = JWTUtil.parseToken(token);
             Long uid = JWTUtil.getTokenUid(token);
-            String key = "three-kingdoms:"+uid+":token";
+            String key = "three-kingdoms:user:"+uid+":token";
             String redisToken = redisTemplate.opsForValue().get(key).toString();
 
             if(redisToken.equals(token)){

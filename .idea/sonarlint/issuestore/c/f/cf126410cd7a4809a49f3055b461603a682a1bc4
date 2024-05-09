@@ -1,14 +1,23 @@
 
-¢
-java:S1488"aImmediately return this expression instead of assigning it to the temporary variable "powerList".(Ž²âÏøÿÿÿÿJ$1ec1c7be-3a91-4f5a-858d-be0404e8f09d
-™
-java:S1488 "]Immediately return this expression instead of assigning it to the temporary variable "power".(£íŽÐJ$f55a0bee-8b78-4250-a0f9-8224ec9c14ee
-š
-java:S1488&"YImmediately return this expression instead of assigning it to the temporary variable "i".(ÓôÐÕýÿÿÿÿJ$9c8cfe61-5f9c-4f88-80ee-40916f649e46
-•
-java:S1488,"YImmediately return this expression instead of assigning it to the temporary variable "i".(ÓÊÊ—J$5e315fbe-5ac4-4cdc-84b9-54df4588ca7d
-•
-java:S14882"YImmediately return this expression instead of assigning it to the temporary variable "i".(ÑâóœJ$86cbcf89-87b3-45bc-a8e7-37097f4311f9
-~
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞJ$e8df67ca-d06c-427a-bca5-c62c12e00d7f
-|	java:S125"<This block of commented-out lines of code should be removed.(êýÛ¿üÿÿÿÿJ$5a9d2b35-8526-40d2-ad31-4ac7b374f1f3
+	java:S112*"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Ç½™€ï1J$35a28ca6-bcd2-4afa-a625-f858502c0420
+r
+java:S3740"/Provide the parametrized type for this generic.(‚Ê«8È½™€ï1J$85b1cdf5-ef46-4d76-99d6-c5eac072afd3
+©
+java:S1488"aImmediately return this expression instead of assigning it to the temporary variable "powerList".(Ž²âÏøÿÿÿÿ8Ê½™€ï1J$662955ea-e714-4d97-bcdc-6a16f37a2219
+ 
+java:S14882"]Immediately return this expression instead of assigning it to the temporary variable "power".(£íŽÐ8Ê½™€ï1J$30c5550d-1b37-4ec0-8c69-dfc90b3de543
+¡
+java:S14888"YImmediately return this expression instead of assigning it to the temporary variable "i".(ÓôÐÕýÿÿÿÿ8Ê½™€ï1J$ea36f0ea-b889-4017-935d-87f022f2c040
+œ
+java:S1488>"YImmediately return this expression instead of assigning it to the temporary variable "i".(ÓÊÊ—8Ê½™€ï1J$37d27fec-976b-41df-a606-d2fa38e12c13
+œ
+java:S1488D"YImmediately return this expression instead of assigning it to the temporary variable "i".(Ñâóœ8Ê½™€ï1J$1cd809b8-eecc-4f12-9c19-eee7c0f21690
+c
+java:S2259&"AA "NullPointerException" could be thrown; "map" is nullable here.(‹“ëîÿÿÿÿÿ8”äºçó1
+É
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ãäž˜ûÿÿÿÿ8ä½™€ï1J$0ef0dcae-c411-490a-805d-053bdc7b83a1
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8å½™€ï1J$f221ba0b-3298-4760-9b36-fb7b367fa346
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8å½™€ï1J$7633a550-0506-4217-a8e7-e137f14536aa
+X	java:S125%"<This block of commented-out lines of code should be removed.(²Ýæƒ8äºçó1

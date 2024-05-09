@@ -1,9 +1,6 @@
 package com.three_kingdoms.domain;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,7 +26,10 @@ public class User {
     private String sex;
     //出生日期
     private Date birth;
+    //状态（0正常，1封禁中）
+    private Integer status;
     //是否管理员
+    @TableField(updateStrategy = FieldStrategy.NEVER)
     private int admin;
     //帖子数量
     @TableField(exist = false)
@@ -37,6 +37,12 @@ public class User {
     //逻辑删除
     @TableLogic(value = "0",delval = "1")
     private Integer isDelete;
+    //解封的时间（秒级）
+    @TableField(exist = false)
+    private String unBlockTime;
+    //新消息数
+    @TableField(exist = false)
+    private Integer newNum;
 
     public User(String uname, String password) {
         this.uname = uname;

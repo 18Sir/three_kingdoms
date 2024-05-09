@@ -5,11 +5,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.three_kingdoms.controller.Result;
 import com.three_kingdoms.controller.ResultCode;
 import com.three_kingdoms.dao.UserDao;
+import com.three_kingdoms.domain.MessageType;
 import com.three_kingdoms.domain.User;
 import com.three_kingdoms.exception.SystemException;
 import com.three_kingdoms.services.UserServices;
-import com.three_kingdoms.util.EmailCode;
-import com.three_kingdoms.util.JWTUtil;
+import com.three_kingdoms.util.*;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +20,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.UUID;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @Slf4j
@@ -38,26 +39,56 @@ public class UserServicesImpl implements UserServices {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    @Autowired
+    private Verify verify;
+
+    @Resource
+    private SendMessage sendMessage;
+
     @Override
     public User findById(Long id) {
         User user = userDao.selectById(id);
         user.setPassword("用户密码不可见");
-        return user;
+        return checkBlock(user);
     }
 
     @Override
     public User findByName(String name) {
         QueryWrapper<User> qw = new QueryWrapper<>();
         qw.eq("uname", name);
-        User user = userDao.selectOne(qw);
+        User user = checkBlock(userDao.selectOne(qw));
         return user;
     }
 
     @Override
     public List<User> findAll() {
-
         List<User> userList = userDao.selectList(null);
+        for (User user : userList) {
+            user = checkBlock(user);
+        }
         return userList;
+    }
+
+    //检查封禁，如果已解封则更新用户状态
+    private User checkBlock(User user){
+        if(user == null || user.getUid() == null){
+            return user;
+        }
+        String blockKey = "three-kingdoms:block:"+user.getUid();
+        Long expire = redisTemplate.getExpire(blockKey);
+        if(expire == -2){
+            if(user.getStatus() > 0){
+                user.setStatus(0);
+                userDao.updateById(user);
+            }
+        } else if (expire == -1) {
+            user.setUnBlockTime("永久");
+        } else{
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String time = sdf.format(System.currentTimeMillis()+expire * 1000);
+            user.setUnBlockTime(time);
+        }
+        return user;
     }
 
     @Override
@@ -211,4 +242,95 @@ public class UserServicesImpl implements UserServices {
             return Result.selectError("密码错误");
         }
     }
+
+    @Override
+    public Result<String> blockUser(String token, Long blockUid, Long time, String reason) {
+        //先判断是不是管理员
+        if(verify.isAdmin(token)){
+            //然后添加进小黑屋
+            String blockKey = "three-kingdoms:block:"+blockUid;
+            redisTemplate.opsForValue().set(blockKey,reason,time,TimeUnit.SECONDS);
+            User user = userDao.selectById(blockUid);
+            user.setStatus(1);
+            userDao.updateById(user);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String unBlockTime = sdf.format(System.currentTimeMillis()+time * 1000);
+            reason += "对您做出封禁处罚，解封时间："+unBlockTime + "，封禁期间无法发布帖子与评论。";
+            sendMessage.sendSysMsgForWeiGui(user.getUid(),reason);
+            return Result.saveSuccess("封禁成功");
+        }else{
+            return Result.saveError("您没有这个权限");
+        }
+    }
+
+    @Override
+    public Result<String> unBlockUser(String token, Long blockUid) {
+        if(verify.isAdmin(token)){
+            String blockKey = "three-kingdoms:block:"+blockUid;
+            Boolean delete = redisTemplate.delete(blockKey);
+            if(delete){
+                User user = userDao.selectById(blockUid);
+                user.setStatus(0);
+                userDao.updateById(user);
+                sendMessage.sendSysMsg(user.getUid(),"解封通知",
+                        "您的封禁已解除，可以正常发表帖子和评论了！");
+                return Result.deleteSuccess("封禁已解除");
+            }else{
+                return Result.deleteSuccess("解除失败，请稍后重试");
+            }
+        }else{
+            return Result.saveError("您没有这个权限");
+        }
+    }
+
+    @Override
+    public Result<Long> blockUserTTC(String token) {
+        Long blockUid = JWTUtil.getTokenUid(token);
+        String blockKey = "three-kingdoms:block:"+blockUid;
+        Long expire = redisTemplate.getExpire(blockKey);
+        return Result.selectSuccess(expire == null ? 0 : expire);
+    }
+
+    //向用户发送信息
+    public Result<String> sendUserMessage(Long uid, String title, String content, MessageType type){
+        return sendMessage.sendSysMsg(uid,title,content);
+    }
+
+    //用户删除信息
+    public Result<String> userDelMessage(String token,String hashKey,MessageType type){
+        Long uid = JWTUtil.getTokenUid(token);
+        String messageKey = "three-kingdoms:user:"+uid+":message:"+type;
+        redisTemplate.opsForHash().delete(messageKey,hashKey);
+        return Result.deleteSuccess("消息删除成功");
+    }
+
+    //新消息提示
+    public Result<Integer> hasNewMessage(String token){
+        Long uid = JWTUtil.getTokenUid(token);
+        String newMessageKey = "three-kingdoms:user:"+uid+":message:new:"+MessageType.SYSTEM;
+        Map newMessage = redisTemplate.opsForHash().entries(newMessageKey);
+        Integer newNum = newMessage == null ? 0 : newMessage.size();
+        return Result.selectSuccess(newNum);
+    }
+
+    //用户访问自己的消息
+    public Result<Map<String, Object>> userGetMessage(String token,MessageType type){
+        Long uid = JWTUtil.getTokenUid(token);
+        String newMessageKey = "three-kingdoms:user:"+uid+":message:new:"+type;
+        String messageKey = "three-kingdoms:user:"+uid+":message:"+type;
+        Map newMessage = redisTemplate.opsForHash().entries(newMessageKey);
+        Map Message = redisTemplate.opsForHash().entries(messageKey);
+        if(newMessage != null){
+            redisTemplate.delete(newMessageKey);
+            redisTemplate.opsForHash().putAll(messageKey,newMessage);
+        }else{
+            newMessage = new LinkedHashMap();
+        }
+        Map<String,Object> userMessage = new LinkedHashMap<>();
+        userMessage.put("new",MapSort.sortMapByDesc(newMessage));
+        userMessage.put("history",MapSort.sortMapByDesc(Message));
+        userMessage.put("newNum",newMessage.size());
+        return Result.selectSuccess(userMessage);
+    }
+
 }

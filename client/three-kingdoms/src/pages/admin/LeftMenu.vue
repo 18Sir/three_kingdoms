@@ -46,6 +46,15 @@
           <span>用户管理</span>
         </template>
       </el-menu-item>
+      <el-sub-menu index="7" route="/admin/comment">
+        <template #title>
+          <span>举报管理</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="7-1" route="/admin/jubao/msg">帖子列表</el-menu-item>
+          <el-menu-item index="7-2" route="/admin/jubao/comment">评论列表</el-menu-item>
+        </el-menu-item-group>
+      </el-sub-menu>
     </el-menu>
   </div>
 </template>

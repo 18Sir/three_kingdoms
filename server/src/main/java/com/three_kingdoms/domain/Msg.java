@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -26,11 +27,15 @@ public class Msg {
     @TableField(exist = false)
     private String userName;
     //帖子浏览量
-    private int visits;
+    private Long visits;
     //帖子点赞数
-    private int likes;
+    private Long likes;
+    //点踩数
+    private Long unLikes;
+    //热度
+    private Long hot;
     //帖子分享数
-    private int share;
+    private long share;
     //帖子的标题
     private String title;
     //帖子的内容
@@ -47,4 +52,13 @@ public class Msg {
     //评论数
     @TableField(exist = false)
     private Integer commentNum;
+    //包含评论
+    @TableField(exist = false)
+    private List<Comment> commentList;
+    //用户是否已点赞
+    @TableField(exist = false)
+    private Boolean isLiked;
+    //用户是否已点踩
+    @TableField(exist = false)
+    private Boolean isUnLiked;
 }

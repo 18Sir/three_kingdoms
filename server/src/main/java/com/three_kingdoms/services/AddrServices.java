@@ -26,6 +26,9 @@ public interface AddrServices {
     //按id查询单个地点的详细信息
     Addr findById(Long addrId);
 
+    //根据名称查询单个地点的详细信息
+    Result<Addr> findByName(String name);
+
     //增加地点
     Integer save(Addr addr);
 

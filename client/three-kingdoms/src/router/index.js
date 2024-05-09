@@ -7,7 +7,8 @@ const routes = [
         // 页面访问路径
         path: "/",
         // 页面的文件
-        component: Main
+        component: Main,
+        meta: { title: '首页' }
     },
     {
         path: "/login",
@@ -17,69 +18,100 @@ const routes = [
     {
         path: "/actor",
         redirect: "/actor/more/all",
-        component: () => import("../pages/Actor.vue"),
-
+        component: () => import("../pages/actor/Actor.vue"),
+        meta: { title: '人物传记' },
         children: [
             {
                 path: "more/:name",
-                component: () => import("../pages/ActorMore.vue")
+                component: () => import("../pages/actor/ActorMore.vue"),
+                meta: { title: '更多人物' },
             },
             {
                 path: "info/:id/:name",
-                component: () => import("../pages/ActorInfo.vue")
+                component: () => import("../pages/actor/ActorInfo.vue"),
+                meta: { title: '人物详情' },
             }
         ]
     },
     {
         path: "/event",
         redirect: "/event/more/all",
-        component: () => import("../pages/Event.vue"),
+        component: () => import("../pages/event/Event.vue"),
+        meta: { title: '历史事件' },
         children: [
             {
                 path: "more/:name",
-                component: () => import("../pages/EventMore.vue")
+                component: () => import("../pages/event/EventMore.vue"),
+                meta: { title: '更多事件' },
             },
             {
                 path: "info/:id/:name",
-                component: () => import("../pages/EventInfo.vue")
+                component: () => import("../pages/event/EventInfo.vue"),
+                meta: { title: '事件详情' },
             }
         ]
     },
     {
         path: "/discuss",
         redirect: "/discuss/more",
-        component: () => import("../pages/Discuss.vue"),
+        component: () => import("../pages/discuss/Discuss.vue"),
+        meta: { title: '交流专区' },
         children: [
             {
                 path: "more",
-                component: () => import("../pages/DiscussMore.vue")
+                component: () => import("../pages/discuss/DiscussMore.vue"),
+                meta: { title: '更多帖子' },
             },
             {
                 path: "info/:id",
-                component: () => import("../pages/DiscussInfo.vue")
+                component: () => import("../pages/discuss/DiscussInfo.vue"),
+                meta: { title: '帖子详情' },
             }
         ]
     },
     {
         path: "/power",
-        component: () => import("../pages/Power.vue")
+        component: () => import("../pages/power/Power.vue"),
+        meta: { title: '势力分布' },
     },
     {
         path: "/user",
-        component: () => import("../pages/User.vue"),
+        component: () => import("../pages/userInfo/User.vue"),
+        meta: { title: '个人中心' },
         children: [
             {
                 path: "setting",
-                component: () => import("../pages/views/UserSetting.vue")
+                component: () => import("../pages/userInfo/UserSetting.vue"),
+                meta: { title: '个人信息' },
             },
             {
                 path: "face",
-                component: () => import("../pages/views/UserFace.vue")
+                component: () => import("../pages/userInfo/UserFace.vue"),
+                meta: { title: '我的头像' },
             },
             {
                 path: "secure",
-                component: () => import("../pages/views/UserSecure.vue"),
-            }
+                component: () => import("../pages/userInfo/UserSecure.vue"),
+                meta: { title: '账户安全' },
+            },
+            {
+                path: "msg",
+                component: () => import("../pages/userInfo/UserMsg.vue"),
+                meta: { title: '我的帖子' },
+            },
+        ]
+    },
+    {
+        path: "/message",
+        redirect: "/message/system",
+        component: () => import("../pages/message/Message.vue"),
+        meta: { title: '消息中心' },
+        children: [
+            {
+                path: "system",
+                component: () => import("../pages/message/SysMessage.vue"),
+                meta: { title: '系统消息' },
+            },
         ]
     },
     {
@@ -105,11 +137,19 @@ const routes = [
             },
             {
                 path: "msg/list",
-                component: () => import("../pages/admin/MsgListTable.vue")
+                component: () => import("../pages/admin/msg/MsgListTable.vue")
             },
             {
                 path: "msg/type",
-                component: () => import("../pages/admin/MsgTypeTable.vue")
+                component: () => import("../pages/admin/msg/MsgTypeTable.vue")
+            },
+            {
+                path: "jubao/msg",
+                component: () => import("../pages/admin/jubao/MsgJuBaoTable.vue")
+            },
+            {
+                path: "jubao/comment",
+                component: () => import("../pages/admin/jubao/CommentJuBaoTable.vue")
             },
             {
                 path: "user",

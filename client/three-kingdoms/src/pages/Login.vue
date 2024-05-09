@@ -1,158 +1,160 @@
 <template>
-  <el-row style="height: 100vh">
-    <el-col :span="12">
-      <img src="../../images/background.png" class="left-img" />
-    </el-col>
-    <el-col
-      :span="12"
-      style="
-        background-color: #eee;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      "
-    >
-      <el-card shadow="always">
-        <!-- 注册操作 -->
-        <transition name="el-zoom-in-center">
-          <div v-show="isRegister" class="transition-box">
-            <el-form :rules="rules" :model="userData">
-              <h1>注册</h1>
-              <el-form-item prop="uname">
-                <el-input
-                  v-model="userData.uname"
-                  placeholder="请输入用户名"
-                  clearable
-                >
-                  <template #prepend>
-                    <el-icon><User /></el-icon> 用户名:
-                  </template>
-                </el-input>
-              </el-form-item>
-
-              <el-form-item prop="password">
-                <el-input
-                  v-model="userData.password"
-                  type="password"
-                  placeholder="请输入密码"
-                  show-password
-                >
-                  <template #prepend>
-                    <el-icon><Lock /></el-icon> 密码:
-                  </template>
-                </el-input>
-              </el-form-item>
-
-              <el-form-item prop="rePassword">
-                <el-input
-                  v-model="userData.rePassword"
-                  type="password"
-                  placeholder="请再次输入密码"
-                  show-password
-                >
-                  <template #prepend>
-                    <el-icon><Lock /></el-icon> 确认密码:
-                  </template>
-                </el-input>
-              </el-form-item>
-
-              <el-form-item>
-                <el-row justify="space-between" style="height: auto">
-                  <el-button type="primary" @click="register">注册</el-button>
-                  <router-link
-                    class="el-button"
-                    to="/"
-                    style="text-decoration: none"
-                    >取消</router-link
+  <div class="login-box">
+    <el-row style="height: 100vh">
+      <el-col :span="12">
+        <img src="../../images/background.png" class="left-img" />
+      </el-col>
+      <el-col
+        :span="12"
+        style="
+          background-color: #eee;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <el-card shadow="always">
+          <!-- 注册操作 -->
+          <transition name="el-zoom-in-center">
+            <div v-show="isRegister" class="transition-box">
+              <el-form :rules="rules" :model="userData">
+                <h1>注册</h1>
+                <el-form-item prop="uname">
+                  <el-input
+                    v-model="userData.uname"
+                    placeholder="请输入用户名"
+                    clearable
                   >
-                </el-row>
-              </el-form-item>
+                    <template #prepend>
+                      <el-icon><User /></el-icon> 用户名:
+                    </template>
+                  </el-input>
+                </el-form-item>
 
-              <el-form-item>
-                <el-link
-                  type="info"
-                  :underline="false"
-                  @click="isRegister = !isRegister"
-                >
-                  <el-icon><ArrowLeft /></el-icon>返回登录
-                </el-link>
-              </el-form-item>
-            </el-form>
-          </div>
-        </transition>
-
-        <!-- 登录操作 -->
-        <transition name="el-fade-in">
-          <div v-show="!isRegister" class="transition-box">
-            <el-form :rules="rules" :model="userData">
-              <h1>登录</h1>
-              <el-form-item prop="uname">
-                <el-input
-                  v-model="userData.uname"
-                  placeholder="请输入用户名"
-                  clearable
-                >
-                  <template #prepend>
-                    <el-icon><User /></el-icon> 用户名:
-                  </template>
-                </el-input>
-              </el-form-item>
-
-              <el-form-item prop="password">
-                <el-input
-                  v-model="userData.password"
-                  type="password"
-                  placeholder="请输入密码"
-                  show-password
-                >
-                  <template #prepend>
-                    <el-icon><Lock /></el-icon> 密码:
-                  </template>
-                </el-input>
-              </el-form-item>
-
-              <el-form-item>
-                <el-row justify="space-between" style="height: auto">
-                  <el-checkbox
-                    v-model="checked"
-                    label="记住密码"
-                    size="large"
-                  />
-                  <el-link type="primary" :underline="false">
-                    忘记密码？
-                  </el-link>
-                </el-row>
-              </el-form-item>
-
-              <el-form-item>
-                <el-row justify="space-between" style="height: auto">
-                  <el-button type="primary" @click="login">登录</el-button>
-                  <router-link
-                    class="el-button"
-                    to="/"
-                    style="text-decoration: none"
-                    >取消</router-link
+                <el-form-item prop="password">
+                  <el-input
+                    v-model="userData.password"
+                    type="password"
+                    placeholder="请输入密码"
+                    show-password
                   >
-                </el-row>
-              </el-form-item>
+                    <template #prepend>
+                      <el-icon><Lock /></el-icon> 密码:
+                    </template>
+                  </el-input>
+                </el-form-item>
 
-              <el-form-item style="width: 100%; text-align: right">
-                <el-row justify="end" style="height: auto">
+                <el-form-item prop="rePassword">
+                  <el-input
+                    v-model="userData.rePassword"
+                    type="password"
+                    placeholder="请再次输入密码"
+                    show-password
+                  >
+                    <template #prepend>
+                      <el-icon><Lock /></el-icon> 确认密码:
+                    </template>
+                  </el-input>
+                </el-form-item>
+
+                <el-form-item>
+                  <el-row justify="space-between" style="height: auto">
+                    <el-button type="primary" @click="register">注册</el-button>
+                    <router-link
+                      class="el-button"
+                      to="/"
+                      style="text-decoration: none"
+                      >取消</router-link
+                    >
+                  </el-row>
+                </el-form-item>
+
+                <el-form-item>
                   <el-link
                     type="info"
                     :underline="false"
                     @click="isRegister = !isRegister"
                   >
-                    没有账号？前往注册<el-icon><ArrowRight /></el-icon>
+                    <el-icon><ArrowLeft /></el-icon>返回登录
                   </el-link>
-                </el-row>
-              </el-form-item>
-            </el-form>
-          </div>
-        </transition>
-      </el-card>
-    </el-col>
-  </el-row>
+                </el-form-item>
+              </el-form>
+            </div>
+          </transition>
+
+          <!-- 登录操作 -->
+          <transition name="el-fade-in">
+            <div v-show="!isRegister" class="transition-box">
+              <el-form :rules="rules" :model="userData">
+                <h1>登录</h1>
+                <el-form-item prop="uname">
+                  <el-input
+                    v-model="userData.uname"
+                    placeholder="请输入用户名"
+                    clearable
+                  >
+                    <template #prepend>
+                      <el-icon><User /></el-icon> 用户名:
+                    </template>
+                  </el-input>
+                </el-form-item>
+
+                <el-form-item prop="password">
+                  <el-input
+                    v-model="userData.password"
+                    type="password"
+                    placeholder="请输入密码"
+                    show-password
+                  >
+                    <template #prepend>
+                      <el-icon><Lock /></el-icon> 密码:
+                    </template>
+                  </el-input>
+                </el-form-item>
+
+                <el-form-item>
+                  <el-row justify="space-between" style="height: auto">
+                    <el-checkbox
+                      v-model="checked"
+                      label="记住密码"
+                      size="large"
+                    />
+                    <el-link type="primary" :underline="false">
+                      忘记密码？
+                    </el-link>
+                  </el-row>
+                </el-form-item>
+
+                <el-form-item>
+                  <el-row justify="space-between" style="height: auto">
+                    <el-button type="primary" @click="login">登录</el-button>
+                    <router-link
+                      class="el-button"
+                      to="/"
+                      style="text-decoration: none"
+                      >取消</router-link
+                    >
+                  </el-row>
+                </el-form-item>
+
+                <el-form-item style="width: 100%; text-align: right">
+                  <el-row justify="end" style="height: auto">
+                    <el-link
+                      type="info"
+                      :underline="false"
+                      @click="isRegister = !isRegister"
+                    >
+                      没有账号？前往注册<el-icon><ArrowRight /></el-icon>
+                    </el-link>
+                  </el-row>
+                </el-form-item>
+              </el-form>
+            </div>
+          </transition>
+        </el-card>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script setup>
@@ -204,10 +206,10 @@ import stores from "@/stores";
 import router from "@/router";
 
 const options = {
-  lock:true,
+  lock: true,
   fullscreen: true,
   text: "登录成功，正在进入主页...",
-  background:'rgba(240, 240, 240, 0.7)'
+  background: "rgba(240, 240, 240, 0.7)",
 };
 
 //延时加载
@@ -221,7 +223,7 @@ const load = () => {
     router.push({
       path: "/",
     });
-  },2000);
+  }, 2000);
 };
 
 // //用户登录
@@ -233,7 +235,7 @@ const login = async () => {
   let result = await userLoginService(userData.value);
   if (result.code.includes("OK")) {
     stores.commit("setToken", result.data);
-    load()
+    load();
   } else {
     ElMessage.error(result.msg ? result.msg : "登录失败");
   }
@@ -263,40 +265,37 @@ const register = async () => {
 };
 </script>
 
-<style>
-.el-row {
+<style scoped>
+
+.login-box :deep(.el-row) {
   width: 100%;
 }
-.el-col {
+.login-box :deep(.el-col) {
   height: 100vh;
 }
-.left-img {
+.login-box :deep(.left-img) {
   width: 100%;
   height: 100%;
 }
-h1 {
+.login-box :deep(h1) {
   width: 100%;
   text-align: center;
 }
-.el-card {
+.login-box :deep(.el-card) {
   width: 75%;
   height: 55%;
 }
-/* .transition-box{
-  width: 100%;
-  height: 100%;
-} */
-.el-form {
+.login-box :deep(.el-form) {
   height: 100%;
 }
-.el-button {
+.login-box :deep(.el-button) {
   width: 36%;
   height: 6vh;
 }
-.el-input {
+.login-box :deep(.el-input) {
   height: 100%;
 }
-.el-form-item {
+.login-box :deep(.el-form-item) {
   height: 6vh;
   margin-top: 5%;
 }

@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Map;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -17,9 +17,7 @@ public class Power {
     private Long pid;
     private String pname;
     @TableField(typeHandler = JacksonTypeHandler.class)
-    private Map<String,Object> paddr;
-    @TableField(typeHandler = JacksonTypeHandler.class)
-    private Map<String,Object> pactor;
+    private List paddr;
     @TableLogic(value = "0",delval = "1")
     private Integer isDelete;
 }

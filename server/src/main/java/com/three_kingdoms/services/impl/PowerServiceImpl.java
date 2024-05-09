@@ -6,26 +6,44 @@ import com.three_kingdoms.dao.Powerdao;
 import com.three_kingdoms.domain.Power;
 import com.three_kingdoms.services.PowerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PowerServiceImpl implements PowerService {
     @Autowired
     private Powerdao powerDao;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
     @Override
     public List<Power> findPowerAll() {
         List<Power> powerList = powerDao.selectList(null);
-//        for (int i = 0; i < powerList.size(); i++) {
-//            Map<String, Object> paddr = powerList.get(i).getPaddr();
-//            Map<String, Object> pactor = powerList.get(i).getPactor();
-//            Object[] names = pactor.values().toArray();
-//            System.out.println(names.toString());
-//
-//        }
         return powerList;
     }
+
+    public void rFindAllPower(){
+
+    }
+
+    public Result<String> rSavePower(Power power){
+        String key = "three-kingdoms:power:"+power.getPid();
+        Map<String, Object> map = null;
+        try {
+//            map = power.getPaddr();
+            map.put("name",power.getPname());
+            redisTemplate.opsForHash().putAll(key,map);
+            return Result.saveSuccess("势力信息添加成功");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
     @Override
     public Power findPowerById(Long pid) {

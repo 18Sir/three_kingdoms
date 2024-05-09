@@ -69,6 +69,7 @@
 .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
     margin: 2px 0;
     padding: 0.5rem 0.75rem;
+    /* justify-content: center; */
 }
 
 .p-dropdown-panel .p-dropdown-header .p-dropdown-filter{

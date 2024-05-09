@@ -49,6 +49,19 @@ public class AddrServicesImpl implements AddrServices {
         return addr;
     }
 
+    //根据名称查询单个地点的详细信息
+    @Override
+    public Result<Addr> findByName(String name) {
+        LambdaQueryWrapper<Addr> lqw = new LambdaQueryWrapper<>();
+        name = "荆州 魏".equals(name) ? "荆州" : name;
+        lqw.eq(Addr::getAddrName,name);
+        Addr addr = addrDao.selectOne(lqw);
+        if (addr != null) {
+            addr.setEventList(getAddrEventList(addr.getEids()));
+        }
+        return Result.selectSuccess(addrDao.selectOne(lqw));
+    }
+
     //获取地点涉及的事件
     public List<Event> getAddrEventList(String eids) {
         List<Event> eventList = new ArrayList<>();
