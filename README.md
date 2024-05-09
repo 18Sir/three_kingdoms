@@ -18,7 +18,7 @@ l 势力分布页根据事件动态展示某个时期的势力分布图；
 
 <img src=".\README.assets\image-20240509221844393.png" alt="image-20240509221844393" style="zoom:25%;" /><img src=".\README.assets\image-20240509222134717.png" alt="image-20240509222134717" style="zoom:25%;" />
 
-添加一条势力<img src=".README.assets\image-20240509222324130.png" alt="image-20240509222324130" style="zoom:25%;" /><img src="D:\毕设\三国历史可视化展示平台\README.assets\image-20240509222423754.png" alt="image-20240509222423754" style="zoom:25%;" />
+添加一条势力<img src=".\README.assets\image-20240509222324130.png" alt="image-20240509222324130" style="zoom:25%;" /><img src=".\README.assets\image-20240509222423754.png" alt="image-20240509222423754" style="zoom:25%;" />
 
 <img src=".\README.assets\image-20240509222619455.png" alt="image-20240509222619455" style="zoom:25%;" />
 
@@ -38,7 +38,7 @@ l 展示历史人物传记和事件，点击人物传记或事件的地点动态
 
 ![image-20240509230550493](.\README.assets\image-20240509230550493.png)
 
-<img src="D:\毕设\三国历史可视化展示平台\README.assets\image-20240509220012746.png" alt="image-20240509220012746" style="zoom:50%;" /><img src=".\README.assets\image-20240509220056171.png" alt="image-20240509220056171" style="zoom: 50%;" />
+<img src=".\README.assets\image-20240509220012746.png" alt="image-20240509220012746" style="zoom:50%;" /><img src=".\README.assets\image-20240509220056171.png" alt="image-20240509220056171" style="zoom: 50%;" />
 
 
 
